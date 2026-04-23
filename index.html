@@ -119,7 +119,7 @@
     .level-content { display: none; line-height: 1.7; white-space: pre-wrap; color: #ccc; }
     .level-content.show { display: block; }
 
-    /* Block for the new essay about nodes */
+    /* Блок эссе */
     .essay-block {
       background: var(--card); border: 1px solid var(--border); border-radius: 20px;
       padding: 28px 20px; margin: 32px 0; text-align: left;
@@ -128,6 +128,34 @@
     .essay-block h3 { color: var(--gold); text-align: center; margin-bottom: 20px; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; }
     .essay-block h4 { color: var(--gold); margin: 20px 0 8px; }
     .essay-block p { margin-bottom: 12px; }
+
+    /* Зеркало */
+    .mirror-block {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 28px 20px; margin: 32px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .mirror-block::before {
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(252,176,69,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .mirror-block h3 { font-size: 1.4rem; color: var(--gold); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; position: relative; }
+    .mirror-block .subtitle { font-style: italic; color: var(--subtext); margin-bottom: 24px; font-size: 1rem; position: relative; }
+    .mirror-showcase { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; position: relative; z-index: 1; }
+    .mirror-item {
+      background: var(--bg-dark); border: 1px solid var(--border); border-radius: 16px;
+      padding: 18px 16px; min-width: 150px; flex: 1 1 200px;
+      transition: 0.3s; cursor: default;
+    }
+    .mirror-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .mirror-item .object { font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 6px; }
+    .mirror-item .mass { font-size: 1rem; color: #ccc; margin-bottom: 4px; }
+    .mirror-item .nodes { font-size: 0.95rem; color: var(--gold); margin-bottom: 2px; font-family: monospace; }
+    .mirror-item .energy { font-size: 0.9rem; color: var(--subtext); }
+    .mirror-item .comment { font-size: 0.8rem; color: #888; margin-top: 8px; font-style: italic; }
+    .mirror-footer { margin-top: 24px; font-style: italic; color: var(--subtext); font-size: 0.95rem; position: relative; }
 
     .verification { text-align: center; color: #888; font-size: 0.9rem; margin: 28px 0; }
     .x-link { color: var(--gold); text-decoration: none; margin-left: 8px; font-weight: 600; }
@@ -179,11 +207,6 @@
     </div>
   </div>
 
-  <!-- NEW ESSAY BLOCK -->
-  <div class="essay-block" data-i18n="essay.html" id="essay-block">
-    <!-- Content will be filled by i18next -->
-  </div>
-
   <div class="accordion">
     <div class="accordion-item">
       <button class="accordion-header" data-i18n="accordion.grav">RESONANT ACCELERATION (g) — Why the apple falls</button>
@@ -220,6 +243,39 @@
     </div>
   </div>
 
+  <!-- Новый блок эссе (после аккордеона) -->
+  <div class="essay-block" data-i18n="essay.html" id="essay-block"></div>
+
+  <!-- Квантовое зеркало (после эссе) -->
+  <div class="mirror-block" id="quantum-mirror">
+    <h3 data-i18n="mirror.heading">THE WEIGHT OF THE DANCE</h3>
+    <p class="subtitle" data-i18n="mirror.subtitle">What hides behind kilograms</p>
+    <div class="mirror-showcase">
+      <div class="mirror-item">
+        <div class="object">⚖️ 1 kg</div>
+        <div class="mass" data-i18n="mirror.kg_mass">Mass: 1 kg</div>
+        <div class="nodes">N ≈ 1.06×10³⁴</div>
+        <div class="energy">E ≈ 9×10¹⁶ J</div>
+        <div class="comment" data-i18n="mirror.kg_comment">A kilogram is not a lump — it’s an ensemble of 10³⁴ microscopic oscillators</div>
+      </div>
+      <div class="mirror-item">
+        <div class="object">🧍 70 kg</div>
+        <div class="mass" data-i18n="mirror.human_mass">Average human</div>
+        <div class="nodes">N ≈ 7.45×10³⁵</div>
+        <div class="energy">E ≈ 6.3×10¹⁸ J</div>
+        <div class="comment" data-i18n="mirror.human_comment">Your body — an orchestra of 745 quadrillion quadrillion dancing pixels. Your fatigue is not the weight of bones, but the desynchronization of your 7.45×10³⁵ nodes with the general rhythm of the Grid.</div>
+      </div>
+      <div class="mirror-item">
+        <div class="object">⚛️ Electron</div>
+        <div class="mass">m = 9.11×10⁻³¹ kg</div>
+        <div class="nodes">N ≈ 0.97×10¹³</div>
+        <div class="energy">—</div>
+        <div class="comment" data-i18n="mirror.electron_comment">Even the electron’s mass is a resonance pattern, tied to Φ¹² / (2π)</div>
+      </div>
+    </div>
+    <p class="mirror-footer" data-i18n="mirror.footer">Density is concentration of nodes in volume. Inertia is resistance of nodes to rhythm change. Gravity is the gradient of this density. Stop asking «how much do I weigh?» — ask «how many bricks of space dance inside me?»</p>
+  </div>
+
   <div class="verification">
     <p><span data-i18n="verification.text"></span><span class="hash">#37474</span></p>
     <p><span data-i18n="x.follow">Follow on</span> <a class="x-link" href="https://x.com/MarsK_X" target="_blank">𝕏 @MarsK_X</a></p>
@@ -241,7 +297,6 @@
   function updateContent() {
     $('[data-i18n]').each(function() {
       const key = $(this).attr('data-i18n');
-      // For the essay block, we use .html() to allow HTML formatting
       if (key === 'essay.html') {
         $(this).html(i18next.t(key));
         return;
