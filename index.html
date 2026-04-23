@@ -21,14 +21,10 @@
       padding: 40px 20px;
       min-height: 100vh;
     }
-    .container {
-      max-width: 900px;
-      width: 100%;
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    .container { max-width: 960px; width: 100%; }
+
+    /* Hero */
+    .hero { text-align: center; margin-bottom: 40px; }
     .hero h1 {
       font-size: 2.5rem;
       background: linear-gradient(135deg, #f0c27b, #fcb045);
@@ -50,56 +46,113 @@
     }
     .btn:hover { background: #2a2a40; }
 
-    .block {
+    /* Карточки */
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    .card {
       background: #12131c;
       border: 1px solid #2a2a3c;
       border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 24px;
+      padding: 20px 16px;
+      flex: 1 1 250px;
+      max-width: 300px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       transition: 0.3s;
-    }
-    .block:hover { border-color: #fcb045; }
-    .block .formula-line {
-      font-family: monospace;
-      font-size: 1.2rem;
-      color: #fcb045;
       text-align: center;
-      margin: 10px 0;
-    }
-    .level-switch {
       display: flex;
-      gap: 8px;
-      margin: 16px 0 8px;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 160px;  /* уменьшена высота примерно на треть от прежней */
     }
-    .level-btn {
-      background: transparent;
-      border: 1px solid #444;
-      color: #aaa;
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
+    .card:hover { border-color: #fcb045; }
+    .old-formula {
+      font-family: monospace;
+      font-size: 1.1rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-bottom: 4px;
     }
-    .level-btn.active {
-      background: #fcb045;
-      border-color: #fcb045;
-      color: #0b0c10;
-      font-weight: bold;
+    .new-formula {
+      font-family: monospace;
+      font-size: 1.3rem;
+      color: #fcb045;
+      margin: 6px 0 12px;
     }
-    .text-layperson, .text-pro {
-      display: none;
+    .card-title {
+      font-size: 1rem;
       color: #ccc;
-      line-height: 1.6;
-      margin-top: 8px;
+      font-weight: 600;
     }
-    .text-layperson.show, .text-pro.show { display: block; }
 
+    /* Аккордеон */
+    .accordion { margin: 20px 0; }
+    .accordion-item {
+      background: #12131c;
+      border: 1px solid #2a2a3c;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+    .accordion-item:hover { border-color: #fcb045; }
+    .accordion-header {
+      background: transparent;
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 16px 20px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header:after {
+      content: "▼";
+      font-size: 0.8rem;
+      color: #fcb045;
+      transition: transform 0.3s;
+    }
+    .accordion-item.open .accordion-header:after {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: #0e0f16;
+      padding: 0 20px;
+      color: #ccc;
+    }
+    .accordion-item.open .accordion-body {
+      max-height: 1200px; /* достаточно для длинного текста */
+      padding: 16px 20px;
+    }
+    .level-block {
+      margin-bottom: 16px;
+    }
+    .level-block h4 {
+      color: #fcb045;
+      margin-bottom: 6px;
+    }
+    .level-block p {
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    /* Языковая панель */
     .lang-bar {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin: 32px 0;
+      margin: 32px 0 16px;
     }
     .lang-btn {
       background: #1e1e2f;
@@ -127,40 +180,72 @@
       <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Протестируйте телеметрию. Найдите L-инвариант. #37474</p>
     </div>
 
-    <!-- Transition -->
-    <h2 style="text-align:center; margin-bottom:24px;" data-i18n="transition.heading">Великий Переход: От Теней к Генезису</h2>
+    <!-- Заголовок перехода -->
+    <h2 style="text-align:center; margin:24px 0;" data-i18n="transition.heading">Великий Переход: От Теней к Генезису</h2>
 
-    <!-- BLOCK g -->
-    <div class="block" id="block-g">
-      <div class="formula-line">g = G·M / R²  ⎊  g = L · Φ²</div>
-      <div class="level-switch">
-        <button class="level-btn active" onclick="switchLevel('g','layperson')">Для обывателя</button>
-        <button class="level-btn" onclick="switchLevel('g','pro')">Для профессионала</button>
+    <!-- Три прямоугольника -->
+    <div class="cards">
+      <div class="card">
+        <div class="old-formula">g = G·M / R²</div>
+        <div class="new-formula">g = L · Φ²</div>
+        <div class="card-title" data-i18n="g.short_title">Резонансное ускорение</div>
       </div>
-      <div class="text-layperson show" data-i18n="g.layperson"></div>
-      <div class="text-pro" data-i18n="g.pro"></div>
+      <div class="card">
+        <div class="old-formula">E = M·c²</div>
+        <div class="new-formula">E = ħ · F · N</div>
+        <div class="card-title" data-i18n="e.short_title">Квантовая энергия</div>
+      </div>
+      <div class="card">
+        <div class="old-formula">M = F / a</div>
+        <div class="new-formula">M = m_node · N</div>
+        <div class="card-title" data-i18n="m.short_title">Фазово‑объёмная масса</div>
+      </div>
     </div>
 
-    <!-- BLOCK E -->
-    <div class="block" id="block-e">
-      <div class="formula-line">E = M·c²  ⎊  E = ħ · F · N</div>
-      <div class="level-switch">
-        <button class="level-btn active" onclick="switchLevel('e','layperson')">Для обывателя</button>
-        <button class="level-btn" onclick="switchLevel('e','pro')">Для профессионала</button>
+    <!-- Аккордеон -->
+    <div class="accordion">
+      <!-- g -->
+      <div class="accordion-item">
+        <button class="accordion-header" data-i18n="accordion.grav">РЕЗОНАНСНОЕ УСКОРЕНИЕ (g) — Почему падает яблоко</button>
+        <div class="accordion-body">
+          <div class="level-block">
+            <h4>Обыватель</h4>
+            <p data-i18n="g.layperson"></p>
+          </div>
+          <div class="level-block">
+            <h4>Профессионал</h4>
+            <p data-i18n="g.pro"></p>
+          </div>
+        </div>
       </div>
-      <div class="text-layperson show" data-i18n="e.layperson"></div>
-      <div class="text-pro" data-i18n="e.pro"></div>
-    </div>
-
-    <!-- BLOCK M -->
-    <div class="block" id="block-m">
-      <div class="formula-line">M = F / a  ⎊  M = m_node · N</div>
-      <div class="level-switch">
-        <button class="level-btn active" onclick="switchLevel('m','layperson')">Для обывателя</button>
-        <button class="level-btn" onclick="switchLevel('m','pro')">Для профессионала</button>
+      <!-- E -->
+      <div class="accordion-item">
+        <button class="accordion-header" data-i18n="accordion.energy">Энергия (E) — Почему мир «тикает»</button>
+        <div class="accordion-body">
+          <div class="level-block">
+            <h4>Обыватель</h4>
+            <p data-i18n="e.layperson"></p>
+          </div>
+          <div class="level-block">
+            <h4>Профессионал</h4>
+            <p data-i18n="e.pro"></p>
+          </div>
+        </div>
       </div>
-      <div class="text-layperson show" data-i18n="m.layperson"></div>
-      <div class="text-pro" data-i18n="m.pro"></div>
+      <!-- M -->
+      <div class="accordion-item">
+        <button class="accordion-header" data-i18n="accordion.mass">Масса (M) — Почему тело «есть»</button>
+        <div class="accordion-body">
+          <div class="level-block">
+            <h4>Обыватель</h4>
+            <p data-i18n="m.layperson"></p>
+          </div>
+          <div class="level-block">
+            <h4>Профессионал</h4>
+            <p data-i18n="m.pro"></p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Языки -->
@@ -172,7 +257,7 @@
   </div>
 
   <script>
-    // инициализация i18next
+    // Инициализация i18next
     i18next
       .use(i18nextHttpBackend)
       .init({
@@ -199,19 +284,13 @@
       });
     }
 
-    function switchLevel(blockId, level) {
-      const block = document.getElementById(`block-${blockId}`);
-      const buttons = block.querySelectorAll('.level-btn');
-      buttons.forEach(b => b.classList.remove('active'));
-      block.querySelectorAll('.text-layperson, .text-pro').forEach(el => el.classList.remove('show'));
-      if (level === 'layperson') {
-        block.querySelector('.text-layperson').classList.add('show');
-        buttons[0].classList.add('active');
-      } else {
-        block.querySelector('.text-pro').classList.add('show');
-        buttons[1].classList.add('active');
-      }
-    }
+    // Логика аккордеона
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('open');
+      });
+    });
   </script>
 </body>
 </html>
