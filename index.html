@@ -1,421 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genesis · The Great Transition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis · The Great Transition</title>
 
-  <!-- i18n -->
-  <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
-  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
-  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js"></script>
-  <script src="https://unpkg.com/loc-i18next/loc-i18next.min.js"></script>
+    <!-- Favicon (Φ) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='50' font-size='52' fill='%23fcb045' text-anchor='middle'>Φ</text></svg>">
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #0b0c10;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
-    }
-    .container { max-width: 960px; width: 100%; }
+    <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/loc-i18next/loc-i18next.min.js"></script>
 
-    /* Иконка Фи */
-    .phi-icon {
-      font-size: 3rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #f0c27b, #fcb045);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0b0c10;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            width: 100%;
+        }
 
-    /* Hero */
-    .hero { text-align: center; margin-bottom: 30px; }
-    .hero h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #f0c27b, #fcb045);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-    .hero p { font-size: 1.1rem; color: #aaa; margin: 6px 0; }
-    .btn {
-      background: #1e1e2f;
-      border: 1px solid #fcb045;
-      color: #fcb045;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 12px;
-    }
-    .btn:hover { background: #2a2a40; }
+        /* Φ icon */
+        .phi-icon {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f0c27b, #fcb045);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
 
-    /* Языковые кнопки с флагами */
-    .lang-bar {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 28px 0;
-    }
-    .lang-btn {
-      background: #1e1e2f;
-      border: 1px solid #444;
-      color: #ddd;
-      padding: 10px 24px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.2s;
-    }
-    .lang-btn.active-lang {
-      background: #fcb045;
-      color: #0b0c10;
-      border-color: #fcb045;
-      font-weight: bold;
-    }
-    .lang-btn:hover { border-color: #fcb045; }
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #f0c27b, #fcb045);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin: 6px 0;
+        }
+        .btn {
+            background: #1e1e2f;
+            border: 1px solid #fcb045;
+            color: #fcb045;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 12px;
+        }
+        .btn:hover {
+            background: #2a2a40;
+        }
 
-    /* Карточки */
-    .cards {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin: 36px 0;
-      flex-wrap: wrap;
-    }
-    .card {
-      background: #12131c;
-      border: 1px solid #2a2a3c;
-      border-radius: 20px;
-      padding: 24px 20px;
-      flex: 1 1 250px;
-      max-width: 300px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transition: 0.3s;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 180px;
-    }
-    .card:hover { border-color: #fcb045; }
-    .old-formula {
-      font-family: monospace;
-      font-size: 1.5rem;
-      color: #888;
-      text-decoration: line-through;
-      position: relative;
-      display: inline-block;
-      margin: 0 auto 6px;
-    }
-    /* Анимация перечёркивания */
-    .old-formula::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 0%;
-      height: 2px;
-      background: #fcb045;
-      transition: width 0.6s ease;
-    }
-    .card:hover .old-formula::after {
-      width: 100%;
-    }
-    .new-formula {
-      font-family: monospace;
-      font-size: 1.8rem;
-      color: #fcb045;
-      margin: 8px 0 16px;
-    }
-    .card-title {
-      font-size: 1.1rem;
-      color: #ccc;
-      font-weight: 600;
-    }
+        /* Language bar with flags */
+        .lang-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 28px 0;
+        }
+        .lang-btn {
+            background: #1e1e2f;
+            border: 1px solid #444;
+            color: #ddd;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .lang-btn.active-lang {
+            background: #fcb045;
+            color: #0b0c10;
+            border-color: #fcb045;
+            font-weight: bold;
+        }
+        .lang-btn:hover {
+            border-color: #fcb045;
+        }
 
-    /* Аккордеон */
-    .accordion { margin: 20px 0; }
-    .accordion-item {
-      background: #12131c;
-      border: 1px solid #2a2a3c;
-      border-radius: 16px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: 0.2s;
-    }
-    .accordion-item:hover { border-color: #fcb045; }
-    .accordion-header {
-      background: transparent;
-      color: #e0e0e0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 16px 20px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .accordion-header:after {
-      content: "▼";
-      font-size: 0.8rem;
-      color: #fcb045;
-      transition: transform 0.3s;
-    }
-    .accordion-item.open .accordion-header:after {
-      transform: rotate(180deg);
-    }
-    .accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-      background: #0e0f16;
-      padding: 0 20px;
-      color: #ccc;
-    }
-    .accordion-item.open .accordion-body {
-      max-height: 2500px;
-      padding: 16px 20px;
-    }
+        /* Cards (smaller height) */
+        .cards {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin: 36px 0;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #12131c;
+            border: 1px solid #2a2a3c;
+            border-radius: 20px;
+            padding: 16px 14px;           /* уменьшен padding */
+            flex: 1 1 220px;              /* чуть менее широкие */
+            max-width: 260px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 120px;            /* уменьшена высота примерно на треть */
+        }
+        .card:hover {
+            border-color: #fcb045;
+        }
+        .old-formula {
+            font-family: monospace;
+            font-size: 1.5rem;
+            color: #ff4d4d;               /* красный для старой формулы */
+            text-decoration: line-through;
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 6px;
+        }
+        /* анимация перечёркивания (оставлена) */
+        .old-formula::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0%;
+            height: 2px;
+            background: #fcb045;
+            transition: width 0.6s ease;
+        }
+        .card:hover .old-formula::after {
+            width: 100%;
+        }
+        .new-formula {
+            font-family: monospace;
+            font-size: 1.7rem;           /* всё ещё крупно */
+            color: #fcb045;
+            margin: 8px 0 14px;
+        }
+        .card-title {
+            font-size: 1rem;
+            color: #ccc;
+            font-weight: 600;
+        }
 
-    /* Переключатель уровня */
-    .level-switch {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .level-btn {
-      background: transparent;
-      border: 1px solid #444;
-      color: #aaa;
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: 0.2s;
-    }
-    .level-btn.active {
-      background: #fcb045;
-      border-color: #fcb045;
-      color: #0b0c10;
-      font-weight: bold;
-    }
-    .level-content {
-      display: none;
-      line-height: 1.7;
-      white-space: pre-wrap;
-      color: #ccc;
-    }
-    .level-content.show { display: block; }
+        /* Accordion */
+        .accordion {
+            margin: 20px 0;
+        }
+        .accordion-item {
+            background: #12131c;
+            border: 1px solid #2a2a3c;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+        .accordion-item:hover {
+            border-color: #fcb045;
+        }
+        .accordion-header {
+            background: transparent;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:after {
+            content: "▼";
+            font-size: 0.8rem;
+            color: #fcb045;
+            transition: transform 0.3s;
+        }
+        .accordion-item.open .accordion-header:after {
+            transform: rotate(180deg);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: #0e0f16;
+            padding: 0 20px;
+            color: #ccc;
+        }
+        .accordion-item.open .accordion-body {
+            max-height: 2500px;
+            padding: 16px 20px;
+        }
 
-    /* Калькулятор */
-    .calculator {
-      background: #12131c;
-      border: 1px solid #2a2a3c;
-      border-radius: 20px;
-      padding: 20px;
-      text-align: center;
-      margin: 32px 0;
-    }
-    .calculator input {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #0b0c10;
-      color: #fcb045;
-      font-family: monospace;
-      margin: 0 6px;
-    }
-    .calc-result {
-      font-size: 1.3rem;
-      margin-top: 12px;
-      color: #fcb045;
-    }
+        /* Level switch tabs */
+        .level-switch {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .level-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #aaa;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .level-btn.active {
+            background: #fcb045;
+            border-color: #fcb045;
+            color: #0b0c10;
+            font-weight: bold;
+        }
+        .level-content {
+            display: none;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            color: #ccc;
+        }
+        .level-content.show {
+            display: block;
+        }
 
-    /* Верификация */
-    .verification {
-      text-align: center;
-      color: #888;
-      font-size: 0.9rem;
-      margin: 28px 0;
-    }
-    .verification .ai-list { color: #aaa; }
-    .x-link {
-      color: #fcb045;
-      text-decoration: none;
-      margin-left: 8px;
-      font-weight: 600;
-    }
-    .x-link:hover { text-decoration: underline; }
-  </style>
+        /* Verification block */
+        .verification {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin: 28px 0;
+        }
+        .x-link {
+            color: #fcb045;
+            text-decoration: none;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        .x-link:hover {
+            text-decoration: underline;
+        }
+        .hash {
+            color: #fcb045;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Иконка Фи -->
+<div class="container">
+    <!-- Φ icon -->
     <div class="hero">
-      <div class="phi-icon">Φ</div>
-      <h1 data-i18n="hero.formula">3.747405725 × 2.6180339887 = 9.811237...</h1>
-      <p data-i18n="hero.pixel">L = 3.747405725 m — Pixel of Reality</p>
-      <button class="btn" data-i18n="hero.verify">Verify</button>
-      <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Test telemetry. Find L-invariant. #37474</p>
+        <div class="phi-icon">Φ</div>
+        <h1 data-i18n="hero.formula">3.747405725 × 2.6180339887 = 9.811237...</h1>
+        <p data-i18n="hero.pixel">L = 3.747405725 m — Pixel of Reality</p>
+        <button class="btn" data-i18n="hero.verify">Verify</button>
+        <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Test telemetry. Find L-invariant. #37474</p>
     </div>
 
     <h2 style="text-align:center; margin:10px 0;" data-i18n="transition.heading">The Great Transition: From Shadows to Genesis</h2>
 
-    <!-- Языковые флаги -->
+    <!-- Language bar -->
     <div class="lang-bar">
-      <button class="lang-btn" onclick="setLang('en')"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> English</button>
-      <button class="lang-btn" onclick="setLang('ru')"><span>🇷🇺</span> Русский</button>
-      <button class="lang-btn" onclick="setLang('zh')"><span>🇨🇳</span> 中文</button>
+        <button class="lang-btn" onclick="setLang('en')"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> English</button>
+        <button class="lang-btn" onclick="setLang('ru')"><span>🇷🇺</span> Русский</button>
+        <button class="lang-btn" onclick="setLang('zh')"><span>🇨🇳</span> 中文</button>
     </div>
 
-    <!-- Три прямоугольника -->
+    <!-- Three cards -->
     <div class="cards">
-      <div class="card">
-        <div class="old-formula">g = G·M / R²</div>
-        <div class="new-formula">g = L · Φ²</div>
-        <div class="card-title" data-i18n="g.short_title">Resonant Acceleration</div>
-      </div>
-      <div class="card">
-        <div class="old-formula">E = M·c²</div>
-        <div class="new-formula">E = ħ · F · N</div>
-        <div class="card-title" data-i18n="e.short_title">Quantum Energy</div>
-      </div>
-      <div class="card">
-        <div class="old-formula">M = F / a</div>
-        <div class="new-formula">M = m_node · N</div>
-        <div class="card-title" data-i18n="m.short_title">Phase‑Volume Mass</div>
-      </div>
+        <div class="card">
+            <div class="old-formula">g = G·M / R²</div>
+            <div class="new-formula">g = L · Φ²</div>
+            <div class="card-title" data-i18n="g.short_title">Resonant Acceleration</div>
+        </div>
+        <div class="card">
+            <div class="old-formula">E = M·c²</div>
+            <div class="new-formula">E = ħ · F · N</div>
+            <div class="card-title" data-i18n="e.short_title">Quantum Energy</div>
+        </div>
+        <div class="card">
+            <div class="old-formula">M = F / a</div>
+            <div class="new-formula">M = m_node · N</div>
+            <div class="card-title" data-i18n="m.short_title">Phase‑Volume Mass</div>
+        </div>
     </div>
 
-    <!-- Аккордеон -->
+    <!-- Accordion -->
     <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.grav">RESONANT ACCELERATION (g) — Why the apple falls</button>
-        <div class="accordion-body">
-          <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'g-layperson')" data-i18n="level.layperson">Layperson</button>
-            <button class="level-btn" onclick="switchLevel(this, 'g-pro')" data-i18n="level.pro">Professional</button>
-          </div>
-          <div class="level-content show" id="g-layperson" data-i18n="g.layperson"></div>
-          <div class="level-content" id="g-pro" data-i18n="g.pro"></div>
+        <div class="accordion-item">
+            <button class="accordion-header" data-i18n="accordion.grav">RESONANT ACCELERATION (g) — Why the apple falls</button>
+            <div class="accordion-body">
+                <div class="level-switch">
+                    <button class="level-btn active" onclick="switchLevel(this, 'g-layperson')" data-i18n="level.layperson">Layperson</button>
+                    <button class="level-btn" onclick="switchLevel(this, 'g-pro')" data-i18n="level.pro">Professional</button>
+                </div>
+                <div class="level-content show" id="g-layperson" data-i18n="g.layperson"></div>
+                <div class="level-content" id="g-pro" data-i18n="g.pro"></div>
+            </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.energy">Energy (E) — Why the world 'ticks'</button>
-        <div class="accordion-body">
-          <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'e-layperson')" data-i18n="level.layperson">Layperson</button>
-            <button class="level-btn" onclick="switchLevel(this, 'e-pro')" data-i18n="level.pro">Professional</button>
-          </div>
-          <div class="level-content show" id="e-layperson" data-i18n="e.layperson"></div>
-          <div class="level-content" id="e-pro" data-i18n="e.pro"></div>
+        <div class="accordion-item">
+            <button class="accordion-header" data-i18n="accordion.energy">Energy (E) — Why the world 'ticks'</button>
+            <div class="accordion-body">
+                <div class="level-switch">
+                    <button class="level-btn active" onclick="switchLevel(this, 'e-layperson')" data-i18n="level.layperson">Layperson</button>
+                    <button class="level-btn" onclick="switchLevel(this, 'e-pro')" data-i18n="level.pro">Professional</button>
+                </div>
+                <div class="level-content show" id="e-layperson" data-i18n="e.layperson"></div>
+                <div class="level-content" id="e-pro" data-i18n="e.pro"></div>
+            </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.mass">Mass (M) — Why the body 'exists'</button>
-        <div class="accordion-body">
-          <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'm-layperson')" data-i18n="level.layperson">Layperson</button>
-            <button class="level-btn" onclick="switchLevel(this, 'm-pro')" data-i18n="level.pro">Professional</button>
-          </div>
-          <div class="level-content show" id="m-layperson" data-i18n="m.layperson"></div>
-          <div class="level-content" id="m-pro" data-i18n="m.pro"></div>
+        <div class="accordion-item">
+            <button class="accordion-header" data-i18n="accordion.mass">Mass (M) — Why the body 'exists'</button>
+            <div class="accordion-body">
+                <div class="level-switch">
+                    <button class="level-btn active" onclick="switchLevel(this, 'm-layperson')" data-i18n="level.layperson">Layperson</button>
+                    <button class="level-btn" onclick="switchLevel(this, 'm-pro')" data-i18n="level.pro">Professional</button>
+                </div>
+                <div class="level-content show" id="m-layperson" data-i18n="m.layperson"></div>
+                <div class="level-content" id="m-pro" data-i18n="m.pro"></div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- Калькулятор -->
-    <div class="calculator">
-      <p data-i18n="calc.prompt">Test the formula yourself:</p>
-      <div style="margin-top:10px;">
-        <input id="calcL" type="number" value="3.747405725" step="any">
-        <span style="font-size:1.5rem; color:#fcb045;">×</span>
-        <input id="calcPhi2" type="number" value="2.6180339887" step="any">
-      </div>
-      <button class="btn" onclick="calculateg()" data-i18n="calc.button">Compute g</button>
-      <div id="calcResult" class="calc-result"></div>
-    </div>
-
-    <!-- Верификация -->
+    <!-- Verification & X link -->
     <div class="verification">
-      <p data-i18n="verification.text"></p>
-      <p class="ai-list" data-i18n="verification.ai"></p>
-      <p>
-        <span data-i18n="x.follow">Follow on</span>
-        <a class="x-link" href="#" target="_blank">𝕏</a>
-      </p>
+        <p>
+            <span data-i18n="verification.text"></span>
+            <span class="hash">#37474</span>
+        </p>
+        <p>
+            <span data-i18n="x.follow">Follow on</span>
+            <a class="x-link" href="https://x.com/MarsK_X" target="_blank">𝕏 @MarsK_X</a>
+        </p>
     </div>
-  </div>
+</div>
 
-  <script>
-    // Инициализация i18next (язык по умолчанию — английский)
+<script>
     i18next
-      .use(i18nextHttpBackend)
-      .init({
-        lng: 'en',
-        fallbackLng: 'en',
-        backend: { loadPath: '/locales/{{lng}}.json' }
-      }, function() {
-        updateContent();
-        setActiveLangButton('en');
-      });
+        .use(i18nextHttpBackend)
+        .init({
+            lng: 'en',
+            fallbackLng: 'en',
+            backend: { loadPath: '/locales/{{lng}}.json' }
+        }, function() {
+            updateContent();
+            setActiveLangButton('en');
+        });
 
     function updateContent() {
-      $('[data-i18n]').each(function() {
-        const key = $(this).attr('data-i18n');
-        $(this).text(i18next.t(key));
-      });
+        $('[data-i18n]').each(function() {
+            const key = $(this).attr('data-i18n');
+            $(this).text(i18next.t(key));
+        });
     }
 
     function setLang(lng) {
-      i18next.changeLanguage(lng, function() {
-        updateContent();
-        setActiveLangButton(lng);
-      });
+        i18next.changeLanguage(lng, function() {
+            updateContent();
+            setActiveLangButton(lng);
+        });
     }
 
     function setActiveLangButton(lng) {
-      $('.lang-btn').removeClass('active-lang');
-      $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
+        $('.lang-btn').removeClass('active-lang');
+        $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
     }
 
-    // Аккордеон
     document.querySelectorAll('.accordion-header').forEach(btn => {
-      btn.addEventListener('click', function() {
-        this.parentElement.classList.toggle('open');
-      });
+        btn.addEventListener('click', function() {
+            this.parentElement.classList.toggle('open');
+        });
     });
 
-    // Переключение уровней
     function switchLevel(btn, contentId) {
-      const body = btn.closest('.accordion-body');
-      body.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-      body.querySelectorAll('.level-content').forEach(el => el.classList.remove('show'));
-      btn.classList.add('active');
-      document.getElementById(contentId).classList.add('show');
+        const body = btn.closest('.accordion-body');
+        body.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+        body.querySelectorAll('.level-content').forEach(el => el.classList.remove('show'));
+        btn.classList.add('active');
+        document.getElementById(contentId).classList.add('show');
     }
-
-    // Калькулятор
-    function calculateg() {
-      const L = parseFloat(document.getElementById('calcL').value);
-      const Phi2 = parseFloat(document.getElementById('calcPhi2').value);
-      if (isNaN(L) || isNaN(Phi2)) return;
-      const g = L * Phi2;
-      document.getElementById('calcResult').textContent = `g = ${g.toFixed(6)} m/s²`;
-    }
-  </script>
+</script>
 </body>
 </html>
