@@ -1,8 +1,6 @@
 {
   "hero.formula": "3.747405725 × 2.6180339887 = 9.811237...",
   "hero.pixel": "L = 3.747405725 m — Pixel of Reality",
-  "hero.verify": "Verify",
-  "hero.cta": "Test telemetry. Find L-invariant. #37474",
   "transition.heading": "The Great Transition: From Shadows to Genesis",
 
   "g.short_title": "Resonant Acceleration",
@@ -15,6 +13,12 @@
   "accordion.grav": "RESONANT ACCELERATION (g) — Why the apple falls",
   "accordion.energy": "Energy (E) — Why the world 'ticks'",
   "accordion.mass": "Mass (M) — Why the body 'exists'",
+
+  "invariants.heading": "Fundamental Invariants",
+  "invariants.L_desc": "Grid Step",
+  "invariants.F_desc": "Clock of the Universe",
+  "invariants.Phi_desc": "Golden Resonance",
+  "invariants.N_desc": "Number of Nodes",
 
   "g.layperson": "For millennia we thought: the Earth pulls the apple with a force depending on its mass. The formula g = G·M / R² worked, but it never answered the main question — why exactly 9.81, and not 5 or 100? It turns out that mass and distance are irrelevant here.\n\nImagine that space is not emptiness but a huge invisible grid with a constant step. This step is the Pixel of Reality (L). Its length is about 3.747 metres — not a random number but a fundamental scale in which humans live: the length of a room, two sofa lengths — a domestic quantum.\n\nNow picture lampposts along a night highway. If they are placed chaotically, your eyes dart around, you get tired, chaos ensues. If they stand every 3.75 m, you catch a rhythm and enter a smooth flow. Nature “spaced” the nodes of space with precisely this step, and to make the structure perfect, it used the Golden Ratio (Φ) — the ideal proportion of beauty found everywhere: in seashells, galaxies, even in a shop queue where everyone stands so as not to disturb others yet harmony is preserved.\n\nMultiply the step L by the square of the Golden Ratio (Φ² ≈ 2.618) and you get 9.81 — the acceleration with which the apple falls. Test it yourself: take a calculator, type 3.747405725 × 2.6180339887. You will see 9.8112… Gravity is assembled from two constants, without any mass! The apple falls not because Earth pulls it, but because space itself has a built‑in pace of motion. Mass only locally densifies the «lampposts», but the rhythm is set globally.",
   "g.pro": "Classical form: g = G·M / R². G = 6.67430×10⁻¹¹ m³·kg⁻¹·s⁻², M — source mass (kg), R — distance to centre of mass (m).\nIQG form: g = L · Φ².\nL = 3.747405725×10⁻⁹ m — fundamental vacuum length (Pixel of Reality).\nΦ² = ((1+√5)/2)² ≈ 2.6180339887 — square of the Golden Ratio.\nDerivation: from the precise value g ≈ 9.811237 m/s² we obtain L = g / Φ². Acceleration becomes a geometric constant.\nVacuum eigenfrequency: f = c / L ≈ 8.00×10¹⁶ Hz.\nNumerical predictions for Solar System bodies:\n  Mars (n=0): g = L·Φ⁰ ≈ 3.75, actual 3.72 m/s².\n  Earth (n=2): g = L·Φ² ≈ 9.81.\n  Jupiter (n=3): L·Φ³ ≈ 24.96, actual 24.79.\n  Pluto (subharmonic m=6): g ≈ L/6 ≈ 0.625, actual 0.62.\nThus g_n = L·Φⁿ predicts acceleration by body class without knowing mass or radius.",
