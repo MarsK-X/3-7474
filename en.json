@@ -16,5 +16,9 @@
   "tab.architect": "Architect",
   "symbols.heading": "Symbols of IQG",
   "symbols.th1": "Symbol",
-  "symbols.th2": "Meaning"
+  "symbols.th2": "Meaning",
+
+  "block.resonant_title": "Resonant Acceleration",
+  "block.quantum_title": "Quantum Energy",
+  "block.phase_mass_title": "Phase‑Volume Mass"
 }

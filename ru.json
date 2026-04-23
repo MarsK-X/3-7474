@@ -16,5 +16,9 @@
   "tab.architect": "Архитектор",
   "symbols.heading": "Символы IQG",
   "symbols.th1": "Символ",
-  "symbols.th2": "Смысл"
+  "symbols.th2": "Смысл",
+
+  "block.resonant_title": "Резонансное ускорение",
+  "block.quantum_title": "Квантовая энергия",
+  "block.phase_mass_title": "Фазово‑объёмная масса"
 }

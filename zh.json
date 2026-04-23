@@ -16,5 +16,9 @@
   "tab.architect": "建筑师",
   "symbols.heading": "IQG符号",
   "symbols.th1": "符号",
-  "symbols.th2": "意义"
+  "symbols.th2": "意义",
+
+  "block.resonant_title": "共振加速",
+  "block.quantum_title": "量子能量",
+  "block.phase_mass_title": "相体积质量"
 }
