@@ -138,42 +138,51 @@
         .level-content { display: none; line-height: 1.7; white-space: pre-wrap; color: #ccc; }
         .level-content.show { display: block; }
 
-        /* Apostle Thomas Module */
-        .apostle {
-            background: var(--card); border: 2px solid var(--gold); border-radius: 20px;
-            padding: 24px 20px; margin: 32px 0; text-align: center;
-            box-shadow: 0 0 20px rgba(252, 176, 69, 0.1);
+        /* Quantum Mirror */
+        .mirror-block {
+            background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+            padding: 28px 20px; margin: 32px 0; text-align: center;
+            position: relative; overflow: hidden;
         }
-        .apostle h3 {
-            font-size: 1.3rem; color: var(--gold); margin-bottom: 8px;
-            text-transform: uppercase; letter-spacing: 2px;
+        .mirror-block::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(252,176,69,0.03) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .apostle .manifesto {
-            font-style: italic; color: var(--subtext); margin-bottom: 12px;
-            font-size: 1rem;
+        .mirror-block h3 {
+            font-size: 1.4rem; color: var(--gold); margin-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 2px; position: relative;
         }
-        .apostle .context {
-            font-size: 0.9rem; color: #888; margin-bottom: 8px;
+        .mirror-block .subtitle {
+            font-style: italic; color: var(--subtext); margin-bottom: 24px;
+            font-size: 1rem; position: relative;
         }
-        .apostle .input-group {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-            margin-bottom: 12px;
+        .mirror-showcase {
+            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+            position: relative; z-index: 1;
         }
-        .apostle input {
-            padding: 10px 16px; border-radius: 30px; border: 1px solid #444;
-            background: var(--bg-dark); color: var(--text); font-size: 1rem;
-            min-width: 200px; text-align: center; step: 0.0001;
+        .mirror-item {
+            background: var(--bg-dark); border: 1px solid var(--border); border-radius: 16px;
+            padding: 18px 16px; min-width: 150px; flex: 1 1 200px;
+            transition: 0.3s; cursor: default;
         }
-        .apostle input:focus { outline: none; border-color: var(--gold); }
-        .apostle .disclaimer {
-            font-size: 0.75rem; color: #666; margin-top: 12px;
+        .mirror-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+        .mirror-item .object {
+            font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 6px;
         }
-        .apostle .result {
-            margin-top: 18px; font-size: 1rem; color: var(--text);
-            animation: fadeIn 0.5s ease;
+        .mirror-item .mass { font-size: 1rem; color: #ccc; margin-bottom: 4px; }
+        .mirror-item .nodes {
+            font-size: 0.95rem; color: var(--gold); margin-bottom: 2px; font-family: monospace;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .apostle .match-value { font-weight: bold; color: var(--gold); font-size: 1.2rem; }
+        .mirror-item .energy { font-size: 0.9rem; color: var(--subtext); }
+        .mirror-item .comment {
+            font-size: 0.8rem; color: #888; margin-top: 8px; font-style: italic;
+        }
+        .mirror-footer {
+            margin-top: 24px; font-style: italic; color: var(--subtext);
+            font-size: 0.95rem; position: relative;
+        }
 
         .verification { text-align: center; color: #888; font-size: 0.9rem; margin: 28px 0; }
         .x-link { color: var(--gold); text-decoration: none; margin-left: 8px; font-weight: 600; }
@@ -277,20 +286,36 @@
         </div>
     </div>
 
-    <!-- Apostle Thomas Verification Module (FINAL) -->
-    <div class="apostle" id="apostle-module">
-        <h3 data-i18n="apostle.heading">APOSTLE THOMAS VERIFICATION</h3>
-        <p class="manifesto" data-i18n="apostle.manifesto">The Grid is a metric standard. Stop believing. Start verifying.</p>
-        <p class="context" data-i18n="apostle.context_label">Input local g-value (m/s²) for Earth Node synchronization check</p>
-        <div class="input-group">
-            <input type="number" id="gInput" step="0.0001" placeholder="9.8066" data-i18n="[placeholder]apostle.placeholder">
-            <button class="btn" id="verifyBtn" data-i18n="apostle.verify">Verify</button>
+    <!-- Quantum Mirror Block -->
+    <div class="mirror-block" id="quantum-mirror">
+        <h3 data-i18n="mirror.heading">THE WEIGHT OF THE DANCE</h3>
+        <p class="subtitle" data-i18n="mirror.subtitle">What hides behind kilograms</p>
+        <div class="mirror-showcase">
+            <div class="mirror-item">
+                <div class="object">⚖️ 1 kg</div>
+                <div class="mass" data-i18n="mirror.kg_mass">Mass: 1 kg</div>
+                <div class="nodes">N ≈ 1.06×10³⁴</div>
+                <div class="energy">E ≈ 9×10¹⁶ J</div>
+                <div class="comment" data-i18n="mirror.kg_comment">A kilogram is not a lump — it’s an ensemble of 10³⁴ microscopic oscillators</div>
+            </div>
+            <div class="mirror-item">
+                <div class="object">🧍 70 kg</div>
+                <div class="mass" data-i18n="mirror.human_mass">Average human</div>
+                <div class="nodes">N ≈ 7.45×10³⁵</div>
+                <div class="energy">E ≈ 6.3×10¹⁸ J</div>
+                <div class="comment" data-i18n="mirror.human_comment">Your body — an orchestra of 745 quadrillion quadrillion dancing pixels</div>
+            </div>
+            <div class="mirror-item">
+                <div class="object">⚛️ Electron</div>
+                <div class="mass">m = 9.11×10⁻³¹ kg</div>
+                <div class="nodes">N ≈ 0.97×10¹³</div>
+                <div class="energy">—</div>
+                <div class="comment" data-i18n="mirror.electron_comment">Even the electron’s mass is a resonance pattern, tied to Φ¹² / (2π)</div>
+            </div>
         </div>
-        <p class="disclaimer" data-i18n="apostle.disclaimer">Note: This public module is calibrated strictly for Earth Node (n=2). Access to other planetary harmonics is restricted within Plan Alpha.</p>
-        <div class="result" id="apostleResult" style="display: none;">
-            <p><span data-i18n="apostle.standard_label">Earth Resonance Standard</span>: 9.81123725 m/s²</p>
-            <p><span data-i18n="apostle.match_label">Grid Synchronization:</span> <span class="match-value" id="matchPercent"></span>%</p>
-        </div>
+        <p class="mirror-footer" data-i18n="mirror.footer">
+            Density is concentration of nodes in volume. Inertia is resistance of nodes to rhythm change. Gravity is the gradient of this density. Stop asking «how much do I weigh?» — ask «how many bricks of space dance inside me?»
+        </p>
     </div>
 
     <div class="verification">
@@ -315,7 +340,6 @@
         }, function() {
             updateContent();
             setActiveLangButton('en');
-            document.getElementById('verifyBtn').addEventListener('click', verifyApostle);
         });
 
     function updateContent() {
@@ -357,26 +381,6 @@
         body.querySelectorAll('.level-content').forEach(el => el.classList.remove('show'));
         btn.classList.add('active');
         document.getElementById(contentId).classList.add('show');
-    }
-
-    function verifyApostle() {
-        const input = document.getElementById('gInput').value;
-        const resultDiv = document.getElementById('apostleResult');
-        const matchSpan = document.getElementById('matchPercent');
-        const EARTH_STANDARD = 9.81123725;
-
-        if (!input || isNaN(parseFloat(input))) {
-            resultDiv.style.display = 'block';
-            matchSpan.textContent = '—';
-            return;
-        }
-
-        const g = parseFloat(input);
-        const match = (1 - Math.abs(g - EARTH_STANDARD) / EARTH_STANDARD) * 100;
-        const matchClamped = Math.max(0, Math.min(100, match));
-
-        matchSpan.textContent = matchClamped.toFixed(4);
-        resultDiv.style.display = 'block';
     }
 </script>
 </body>
