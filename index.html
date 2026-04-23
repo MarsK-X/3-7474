@@ -87,7 +87,6 @@
         }
         .card-title { font-size: 1rem; color: #ccc; font-weight: 600; }
 
-        /* Инварианты */
         .invariants {
             background: var(--card); border: 1px solid var(--border); border-radius: 20px;
             padding: 20px 16px; margin: 32px 0; text-align: center;
@@ -104,7 +103,6 @@
         .invariant-value { font-size: 1rem; color: #ccc; margin-bottom: 2px; }
         .invariant-desc { font-size: 0.8rem; color: #888; }
 
-        /* Аккордеон */
         .accordion { margin: 20px 0; }
         .accordion-item {
             background: var(--card); border: 1px solid var(--border); border-radius: 16px;
@@ -140,29 +138,36 @@
         .level-content { display: none; line-height: 1.7; white-space: pre-wrap; color: #ccc; }
         .level-content.show { display: block; }
 
-        /* Apostle Thomas Verification */
+        /* Apostle Thomas Module */
         .apostle {
-            background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+            background: var(--card); border: 2px solid var(--gold); border-radius: 20px;
             padding: 24px 20px; margin: 32px 0; text-align: center;
+            box-shadow: 0 0 20px rgba(252, 176, 69, 0.1);
         }
         .apostle h3 {
-            font-size: 1.3rem; color: var(--gold); margin-bottom: 12px;
+            font-size: 1.3rem; color: var(--gold); margin-bottom: 8px;
             text-transform: uppercase; letter-spacing: 2px;
         }
-        .apostle .quote {
-            font-style: italic; color: var(--subtext); margin-bottom: 20px;
-            font-size: 0.95rem;
+        .apostle .manifesto {
+            font-style: italic; color: var(--subtext); margin-bottom: 12px;
+            font-size: 1rem;
+        }
+        .apostle .context {
+            font-size: 0.9rem; color: #888; margin-bottom: 8px;
         }
         .apostle .input-group {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         .apostle input {
             padding: 10px 16px; border-radius: 30px; border: 1px solid #444;
             background: var(--bg-dark); color: var(--text); font-size: 1rem;
-            min-width: 200px; text-align: center;
+            min-width: 200px; text-align: center; step: 0.0001;
         }
         .apostle input:focus { outline: none; border-color: var(--gold); }
+        .apostle .disclaimer {
+            font-size: 0.75rem; color: #666; margin-top: 12px;
+        }
         .apostle .result {
             margin-top: 18px; font-size: 1rem; color: var(--text);
             animation: fadeIn 0.5s ease;
@@ -170,7 +175,6 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .apostle .match-value { font-weight: bold; color: var(--gold); font-size: 1.2rem; }
 
-        /* Верификация */
         .verification { text-align: center; color: #888; font-size: 0.9rem; margin: 28px 0; }
         .x-link { color: var(--gold); text-decoration: none; margin-left: 8px; font-weight: 600; }
         .x-link:hover { text-decoration: underline; }
@@ -211,7 +215,6 @@
         </div>
     </div>
 
-    <!-- Fundamental Invariants -->
     <div class="invariants">
         <h3 data-i18n="invariants.heading">Fundamental Invariants</h3>
         <div class="invariant-list">
@@ -274,21 +277,22 @@
         </div>
     </div>
 
-    <!-- Apostle Thomas Verification (стерильный, без L и Φ) -->
+    <!-- Apostle Thomas Verification Module (FINAL) -->
     <div class="apostle" id="apostle-module">
         <h3 data-i18n="apostle.heading">APOSTLE THOMAS VERIFICATION</h3>
-        <p class="quote" data-i18n="apostle.quote">Stop believing. Start verifying. Put your telemetry into the Grid.</p>
+        <p class="manifesto" data-i18n="apostle.manifesto">The Grid is a metric standard. Stop believing. Start verifying.</p>
+        <p class="context" data-i18n="apostle.context_label">Input local g-value (m/s²) for Earth Node synchronization check</p>
         <div class="input-group">
-            <input type="number" id="gInput" step="any" placeholder="9.81" data-i18n="[placeholder]apostle.placeholder">
+            <input type="number" id="gInput" step="0.0001" placeholder="9.8066" data-i18n="[placeholder]apostle.placeholder">
             <button class="btn" id="verifyBtn" data-i18n="apostle.verify">Verify</button>
         </div>
+        <p class="disclaimer" data-i18n="apostle.disclaimer">Note: This public module is calibrated strictly for Earth Node (n=2). Access to other planetary harmonics is restricted within Plan Alpha.</p>
         <div class="result" id="apostleResult" style="display: none;">
-            <p><span data-i18n="apostle.standard_label">Earth Resonance Standard</span>: 9.811237 m/s²</p>
-            <p data-i18n="apostle.match_label">Synchronization</p>: <span class="match-value" id="matchPercent"></span>%
+            <p><span data-i18n="apostle.standard_label">Earth Resonance Standard</span>: 9.81123725 m/s²</p>
+            <p><span data-i18n="apostle.match_label">Grid Synchronization:</span> <span class="match-value" id="matchPercent"></span>%</p>
         </div>
     </div>
 
-    <!-- Верификация и X -->
     <div class="verification">
         <p>
             <span data-i18n="verification.text"></span>
@@ -302,7 +306,6 @@
 </div>
 
 <script>
-    // i18next инициализация
     i18next
         .use(i18nextHttpBackend)
         .init({
@@ -312,7 +315,6 @@
         }, function() {
             updateContent();
             setActiveLangButton('en');
-            // Вешаем обработчик после инициализации, чтобы быть уверенными, что DOM готов
             document.getElementById('verifyBtn').addEventListener('click', verifyApostle);
         });
 
@@ -320,6 +322,14 @@
         $('[data-i18n]').each(function() {
             const key = $(this).attr('data-i18n');
             $(this).text(i18next.t(key));
+        });
+        // placeholder translation
+        $('[data-i18n]').each(function() {
+            const attr = $(this).attr('data-i18n');
+            if (attr && attr.startsWith('[placeholder]')) {
+                const realKey = attr.replace('[placeholder]', '');
+                $(this).attr('placeholder', i18next.t(realKey));
+            }
         });
     }
 
@@ -335,14 +345,12 @@
         $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
     }
 
-    // Аккордеон
     document.querySelectorAll('.accordion-header').forEach(btn => {
         btn.addEventListener('click', function() {
             this.parentElement.classList.toggle('open');
         });
     });
 
-    // Переключение уровней в аккордеоне
     function switchLevel(btn, contentId) {
         const body = btn.closest('.accordion-body');
         body.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
@@ -351,11 +359,11 @@
         document.getElementById(contentId).classList.add('show');
     }
 
-    // Калькулятор Apostle Thomas (изолированная функция, никаких L и Φ)
     function verifyApostle() {
         const input = document.getElementById('gInput').value;
         const resultDiv = document.getElementById('apostleResult');
         const matchSpan = document.getElementById('matchPercent');
+        const EARTH_STANDARD = 9.81123725;
 
         if (!input || isNaN(parseFloat(input))) {
             resultDiv.style.display = 'block';
@@ -364,11 +372,8 @@
         }
 
         const g = parseFloat(input);
-        const EARTH_RESONANCE = 9.811237;
-
-        // Процент совпадения с эталоном (не раскрываем формулу)
-        const match = (1 - Math.abs(g - EARTH_RESONANCE) / EARTH_RESONANCE) * 100;
-        const matchClamped = Math.max(0, Math.min(100, match)); // чтобы не уходило в минус
+        const match = (1 - Math.abs(g - EARTH_STANDARD) / EARTH_STANDARD) * 100;
+        const matchClamped = Math.max(0, Math.min(100, match));
 
         matchSpan.textContent = matchClamped.toFixed(4);
         resultDiv.style.display = 'block';
