@@ -1,103 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis · Великий Переход</title>
 
-    <!-- Подключаем i18next и зависимости (через CDN, не надо ничего качать) -->
-    <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
-    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/loc-i18next/loc-i18next.min.js"></script>
+  <!-- i18n -->
+  <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/loc-i18next/loc-i18next.min.js"></script>
 
-    <style>
-        /* Твои стили можно вставить сюда, или оставить как есть в другом файле */
-        body { font-family: sans-serif; padding: 20px; }
-        .block { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
-    </style>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0b0c10;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #f0c27b, #fcb045);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .hero p { font-size: 1.1rem; color: #aaa; margin: 6px 0; }
+    .btn {
+      background: #1e1e2f;
+      border: 1px solid #fcb045;
+      color: #fcb045;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 12px;
+    }
+    .btn:hover { background: #2a2a40; }
+
+    .block {
+      background: #12131c;
+      border: 1px solid #2a2a3c;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .block:hover { border-color: #fcb045; }
+    .block .formula-line {
+      font-family: monospace;
+      font-size: 1.2rem;
+      color: #fcb045;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .level-switch {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0 8px;
+    }
+    .level-btn {
+      background: transparent;
+      border: 1px solid #444;
+      color: #aaa;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .level-btn.active {
+      background: #fcb045;
+      border-color: #fcb045;
+      color: #0b0c10;
+      font-weight: bold;
+    }
+    .text-layperson, .text-pro {
+      display: none;
+      color: #ccc;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+    .text-layperson.show, .text-pro.show { display: block; }
+
+    .lang-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 32px 0;
+    }
+    .lang-btn {
+      background: #1e1e2f;
+      border: 1px solid #444;
+      color: #ddd;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .lang-btn.active-lang {
+      background: #fcb045;
+      color: #0b0c10;
+      border-color: #fcb045;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-
-    <!-- ВСЯ СТРАНИЦА С ПЕРЕВОДАМИ ЧЕРЕЗ data-i18n -->
-    <h1 data-i18n="hero.formula">3.747405725 × 2.6180339887 = 9.811237...</h1>
-    <p data-i18n="hero.pixel">L = 3.747405725 м — Пиксель Реальности</p>
-    <button data-i18n="hero.verify">Проверить</button>
-    <p data-i18n="hero.cta">Протестируйте телеметрию. Найдите L-инвариант. #37474</p>
-
-    <h2 data-i18n="transition.heading">Великий Переход: От Теней к Генезису</h2>
-
-    <!-- Блоки с формулами -->
-    <div class="block">
-        <p>g = G·M / R²<br>⎊<br>g = L · Φ²</p>
-        <strong data-i18n="block.resonant_title">Resonant Acceleration</strong>
-        <p data-i18n="Резонансное Ускорение">От «магической» массы — к чистой геометрии вакуума.</p>
+  <div class="container">
+    <!-- Hero -->
+    <div class="hero">
+      <h1 data-i18n="hero.formula">3.747405725 × 2.6180339887 = 9.811237...</h1>
+      <p data-i18n="hero.pixel">L = 3.747405725 м — Пиксель Реальности</p>
+      <button class="btn" data-i18n="hero.verify">Проверить</button>
+      <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Протестируйте телеметрию. Найдите L-инвариант. #37474</p>
     </div>
 
-    <div class="block">
-        <p>E = M·c²<br>⎊<br>E = ħ · F · N</p>
-        <strong data-i18n="block.quantum_title">Quantum Energy</strong>
-        <p data-i18n="Квантовая Энергия">От «веса» — к фазовому объёму захваченной индукции.</p>
+    <!-- Transition -->
+    <h2 style="text-align:center; margin-bottom:24px;" data-i18n="transition.heading">Великий Переход: От Теней к Генезису</h2>
+
+    <!-- BLOCK g -->
+    <div class="block" id="block-g">
+      <div class="formula-line">g = G·M / R²  ⎊  g = L · Φ²</div>
+      <div class="level-switch">
+        <button class="level-btn active" onclick="switchLevel('g','layperson')">Для обывателя</button>
+        <button class="level-btn" onclick="switchLevel('g','pro')">Для профессионала</button>
+      </div>
+      <div class="text-layperson show" data-i18n="g.layperson"></div>
+      <div class="text-pro" data-i18n="g.pro"></div>
     </div>
 
-    <div class="block">
-        <p>M = F / a<br>⎊<br>M = m_node · N</p>
-        <strong data-i18n="block.phase_mass_title">Phase‑Volume Mass</strong>
-        <p data-i18n="Масса Фазового Объёма">От сжигания материи — к подсчёту тактов Вселенной.</p>
+    <!-- BLOCK E -->
+    <div class="block" id="block-e">
+      <div class="formula-line">E = M·c²  ⎊  E = ħ · F · N</div>
+      <div class="level-switch">
+        <button class="level-btn active" onclick="switchLevel('e','layperson')">Для обывателя</button>
+        <button class="level-btn" onclick="switchLevel('e','pro')">Для профессионала</button>
+      </div>
+      <div class="text-layperson show" data-i18n="e.layperson"></div>
+      <div class="text-pro" data-i18n="e.pro"></div>
     </div>
 
-    <h3 data-i18n="essence.heading">Суть Генезиса</h3>
+    <!-- BLOCK M -->
+    <div class="block" id="block-m">
+      <div class="formula-line">M = F / a  ⎊  M = m_node · N</div>
+      <div class="level-switch">
+        <button class="level-btn active" onclick="switchLevel('m','layperson')">Для обывателя</button>
+        <button class="level-btn" onclick="switchLevel('m','pro')">Для профессионала</button>
+      </div>
+      <div class="text-layperson show" data-i18n="m.layperson"></div>
+      <div class="text-pro" data-i18n="m.pro"></div>
+    </div>
 
-    <!-- Аккордеон (просто заголовки) -->
-    <div data-i18n="accordion.grav">РЕЗОНАНСНОЕ УСКОРЕНИЕ (g) — Почему падает яблоко</div>
-    <div data-i18n="accordion.energy">Энергия (E) — Почему мир «тикает»</div>
-    <div data-i18n="accordion.mass">Масса (M) — Почему тело «есть»</div>
+    <!-- Языки -->
+    <div class="lang-bar">
+      <button class="lang-btn active-lang" onclick="setLang('ru')">Русский</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    </div>
+  </div>
 
-    <!-- Табы -->
-    <button data-i18n="tab.observer">Наблюдатель</button>
-    <button data-i18n="tab.engineer">Инженер</button>
-    <button data-i18n="tab.architect">Архитектор</button>
+  <script>
+    // инициализация i18next
+    i18next
+      .use(i18nextHttpBackend)
+      .init({
+        lng: 'ru',
+        fallbackLng: 'ru',
+        backend: { loadPath: '/locales/{{lng}}.json' }
+      }, function() {
+        updateContent();
+        $('.lang-btn[onclick="setLang(\'ru\')"]').addClass('active-lang');
+      });
 
-    <h4 data-i18n="symbols.heading">Символы IQG</h4>
-    <table>
-        <tr><th data-i18n="symbols.th1">Символ</th><th data-i18n="symbols.th2">Смысл</th></tr>
-    </table>
+    function updateContent() {
+      $('[data-i18n]').each(function() {
+        const key = $(this).attr('data-i18n');
+        $(this).text(i18next.t(key));
+      });
+    }
 
-    <hr>
-    <button onclick="switchLang('ru')">Русский</button>
-    <button onclick="switchLang('en')">English</button>
-    <button onclick="switchLang('zh')">中文</button>
+    function setLang(lng) {
+      i18next.changeLanguage(lng, function() {
+        updateContent();
+        $('.lang-btn').removeClass('active-lang');
+        $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
+      });
+    }
 
-    <script>
-        // Инициализация i18next
-        i18next
-            .use(i18nextHttpBackend)
-            .init({
-                lng: 'ru',                 // язык по умолчанию
-                fallbackLng: 'ru',
-                backend: {
-                    loadPath: '/locales/{{lng}}.json'   // путь к нашим файлам переводов
-                }
-            }, function(err, t) {
-                if (err) return console.error(err);
-                // При первой загрузке обновляем переводы в HTML
-                updateContent();
-            });
-
-        // Функция для обновления всех data-i18n элементов
-        function updateContent() {
-            $('[data-i18n]').each(function() {
-                const key = $(this).attr('data-i18n');
-                $(this).text(i18next.t(key));
-            });
-        }
-
-        // Переключение языка
-        function switchLang(lng) {
-            i18next.changeLanguage(lng, function() {
-                updateContent();
-            });
-        }
-    </script>
+    function switchLevel(blockId, level) {
+      const block = document.getElementById(`block-${blockId}`);
+      const buttons = block.querySelectorAll('.level-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      block.querySelectorAll('.text-layperson, .text-pro').forEach(el => el.classList.remove('show'));
+      if (level === 'layperson') {
+        block.querySelector('.text-layperson').classList.add('show');
+        buttons[0].classList.add('active');
+      } else {
+        block.querySelector('.text-pro').classList.add('show');
+        buttons[1].classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
