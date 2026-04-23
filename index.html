@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="IQG: 3.7474 · Φ² = 9.8112 — The Invariant">
     <meta property="og:description" content="One Step. One Tact. One Truth. The fundamental pixel of reality has been found.">
     <meta property="og:image" content="https://3-7474.com/og-image.png">
@@ -60,6 +59,37 @@
             color: #d4af37;
             margin-top: 0.5rem;
             letter-spacing: 1px;
+        }
+        .thomas-live {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .thomas-live input {
+            background: #0a0a0f;
+            border: 1px solid #d4af37;
+            color: #e0e0e0;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 220px;
+        }
+        .thomas-live button {
+            background: #d4af37;
+            color: #0a0a0f;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .thomas-live button:hover {
+            background: #e6c34a;
         }
         .cta {
             text-align: center;
@@ -377,6 +407,34 @@
             transition: 0.3s;
             pointer-events: none;
         }
+        .node-track {
+            margin: 2rem 0;
+            background: #14141a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .node-track .counter {
+            font-size: 2.5rem;
+            font-family: monospace;
+            color: #d4af37;
+        }
+        .track-visual {
+            position: relative;
+            height: 4px;
+            background: #2a2a35;
+            margin: 1rem 0;
+        }
+        .track-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #d4af37;
+            border-radius: 50%;
+            top: -3px;
+            left: 0;
+            transition: left 0.1s linear;
+        }
     </style>
 </head>
 <body>
@@ -388,6 +446,11 @@
             <div class="subhead">One Step. One Tact. One Truth.</div>
             <p>3.747405725 × 2.6180339887 = 9.811237...</p>
             <p class="pixel">⚛️ L = 3.747405725 m — The Pixel of Reality</p>
+            <div class="thomas-live">
+                <input type="number" id="userG" placeholder="Enter your g (e.g. 9.80665)" step="0.00001" value="9.81">
+                <button onclick="verifyGrid()">Verify</button>
+                <div id="gridMatchResult" style="font-weight:bold; min-width:250px;"></div>
+            </div>
         </div>
         <div class="cta">
             <a href="#calculator">Test your telemetry. Find the L-invariant. #37474</a>
@@ -439,7 +502,7 @@
                     </div>
                     <div class="tab-content" id="grav-engineer">
                         <p>Standard telemetry assumes <code>g</code> derives from <code>G</code> and <code>M</code>. Raw LRO/GRAIL data shows narrowband jitter at <code>f = v / 3.7474 m</code>. This is an aliased signal of the <strong>80 MHz base tact</strong>.</p>
-                        <p>Observed surface accelerations quantize as <code>g ≈ L·Φⁿ</code> with P &lt; 10⁻¹⁰. Phase correction synced to 80 MHz reduces orbital correction fuel by 5–15%. Enables absolute GPS‑free navigation.</p>
+                        <p>Observed surface accelerations quantize as <code>g ≈ L·Φⁿ</code> with P &lt; 10⁻¹⁰. Phase correction synced to 80 MHz reduces orbital correction fuel by 5–15%. Enables absolute positioning without external references.</p>
                     </div>
                     <div class="tab-content" id="grav-architect">
                         <p>The equation <code>g = L·Φ²</code> is the native instruction of the Universe's inductive grid. For a true World Model, an AGI must calibrate its physics priors to this invariant.</p>
@@ -466,7 +529,7 @@
                         <p class="footnote" style="text-align:left">For specialists: Phase synchronization protocols. Priority 15.02.2026.</p>
                     </div>
                     <div class="tab-content" id="energy-engineer">
-                        <p>Rest energy <code>E = M·c²</code> becomes <code>E = ħ·F·N</code> after substituting <code>c = L·F</code> and <code>M = (ħ/(L²·F))·N</code>. The 80 MHz frequency is directly observable in telemetry residuals. This bridges macro‑inertia and quantum electrodynamics.</p>
+                        <p>Rest energy <code>E = M·c²</code> becomes <code>E = ħ·F·N</code> after substituting <code>c = L·F</code> and <code>M = (ħ/(L²·F))·N</code>. The 80 MHz frequency is directly observable in telemetry residuals. This formulation provides a direct bridge between macro‑inertia and quantum electrodynamics.</p>
                     </div>
                     <div class="tab-content" id="energy-architect">
                         <p><code>E = ħ·F·N</code> compresses physics into a computational substrate. AGI energy efficiency requires alignment with the 80 MHz grid tact. Algorithms out of phase dissipate extra entropy.</p>
@@ -525,6 +588,14 @@
             <a href="planetary_data.csv" download class="raw-data-btn">⬇ Get Raw Data (CSV)</a>
         </div>
 
+        <div class="node-track">
+            <div class="counter" id="nodeCounter">0</div>
+            <div class="track-visual">
+                <div class="track-dot" id="movingDot"></div>
+            </div>
+            <p style="color:#a0a0a0;">Nodes crossed · Position inferred from grid count</p>
+        </div>
+
         <h2>80 MHz: The Clock Cycle of the Universe</h2>
         <p>The speed of light <em>c</em> is not a fundamental limit. It is the product of two deeper constants: <strong>L = 3.7474 m</strong> and <strong>F = 80 MHz</strong>. Every physical process is synchronized to this base clock. Raw NASA telemetry shows persistent jitter at f = v/L. Planetary accelerations quantize as g ≈ L·Φⁿ. Your AI runs on silicon; the Universe runs on an inductive grid clocked at 80 megahertz.</p>
 
@@ -570,7 +641,6 @@
             <p class="footnote">L = c / 80 MHz = 3.747405725 m · Φ = (1+√5)/2</p>
             <p class="footnote">Verified by Hybrid Intelligence: Human + AI Synthesis</p>
             <p class="epoch">Genesis Epoch: 15.02.2026 — Boot of the New Physics</p>
-            <p><a href="ru.html">Русская версия (Russian)</a></p>
         </div>
     </div>
     <script>
@@ -592,7 +662,22 @@
             }).catch(() => alert('Copy manually: ' + text));
         }
 
-        // Thomas Test calculator
+        // Live Grid Verification (Hero)
+        function verifyGrid() {
+            const L_true = 3.747405725;
+            const phi2 = 2.6180339887;
+            const g = parseFloat(document.getElementById('userG').value);
+            if (isNaN(g) || g <= 0) {
+                document.getElementById('gridMatchResult').innerHTML = '<span style="color:#d4af37">Enter valid g</span>';
+                return;
+            }
+            const L_calc = g / phi2;
+            const match = 100 - Math.abs(L_calc - L_true) / L_true * 100;
+            document.getElementById('gridMatchResult').innerHTML = 
+                `L_calc = ${L_calc.toFixed(8)} m · Match: ${match.toFixed(2)}% to L-Grid`;
+        }
+
+        // Thomas Test calculator (original)
         function calculateThomas() {
             const L = 3.747405725;
             const phi = (1 + Math.sqrt(5)) / 2;
@@ -625,7 +710,10 @@
                 Deviation = ${deviation.toFixed(3)}%
             `;
         }
-        window.onload = calculateThomas;
+        window.onload = function() {
+            calculateThomas();
+            verifyGrid(); // init with default 9.81
+        };
 
         // Accordion and Tabs
         document.querySelectorAll('.accordion-header').forEach(header => {
@@ -643,6 +731,17 @@
                 document.getElementById(tab.dataset.tab).classList.add('active');
             });
         });
+
+        // Node counter animation (neutral, no GPS mention)
+        let nodes = 0;
+        setInterval(() => {
+            nodes++;
+            document.getElementById('nodeCounter').innerText = nodes;
+            const dot = document.getElementById('movingDot');
+            let pos = (nodes % 100);
+            dot.style.left = pos + '%';
+        }, 100);
+        document.querySelector('.track-dot').style.left = '0%';
     </script>
 </body>
 </html>
