@@ -104,7 +104,24 @@
             text-align: center;
             color: #808080;
         }
+        .footer a {
+            font-size: 1.4rem;
+            font-weight: 500;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .footer a:hover {
+            background: #d4af3720;
+            text-decoration: none;
+        }
         .gold-text {
+            color: #d4af37;
+        }
+        .symbol-table td:first-child {
+            font-weight: 600;
             color: #d4af37;
         }
     </style>
@@ -133,6 +150,50 @@
                 <p><strong class="gold-text">Energy</strong> is the sum of universal tact impulses over N nodes. E = M·c² is just a shadow.</p>
             </div>
         </div>
+
+        <!-- Symbols of IQG -->
+        <h2>Symbols of IQG</h2>
+        <table class="symbol-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Meaning</th>
+                    <th>Value / Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>L</td>
+                    <td>Fundamental grid step</td>
+                    <td>3.747405725 m (derived from c / 80 MHz)</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>Universal tact frequency</td>
+                    <td>80 MHz</td>
+                </tr>
+                <tr>
+                    <td>Φ (phi)</td>
+                    <td>Golden ratio</td>
+                    <td>(1+√5)/2 ≈ 1.618034</td>
+                </tr>
+                <tr>
+                    <td>n</td>
+                    <td>Quantum harmonic number</td>
+                    <td>Integer or half-integer; defines gravity resonance</td>
+                </tr>
+                <tr>
+                    <td>N</td>
+                    <td>Number of coherent grid nodes</td>
+                    <td>Determines mass: M = m_node · N</td>
+                </tr>
+                <tr>
+                    <td>m_node</td>
+                    <td>Mass of a single grid node</td>
+                    <td>ħ / (L²·F) ≈ 9.38×10⁻⁴⁴ kg</td>
+                </tr>
+            </tbody>
+        </table>
 
         <!-- Genesis of Thought -->
         <h2>Four Shadows, One Truth</h2>
@@ -215,8 +276,9 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>Follow the thread: <a href="https://x.com/MarsK_X" target="_blank">@MarsK_X</a></p>
+            <p><a href="https://x.com/MarsK_X" target="_blank">📡 Follow @MarsK_X</a></p>
             <p class="footnote">L = c / 80 MHz = 3.747405725 m · Φ = (1+√5)/2</p>
+            <p><a href="ru.html">Русская версия</a></p>
         </div>
     </div>
 </body>
