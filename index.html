@@ -57,7 +57,7 @@
         }
         .card:hover { border-color: #fcb045; }
         .old-formula {
-            font-family: monospace; font-size: 1.5rem; color: #ff4d4d; /* красный */
+            font-family: monospace; font-size: 1.5rem; color: #ff4d4d;
             text-decoration: line-through; position: relative;
             display: inline-block; margin: 0 auto 6px;
         }
@@ -72,6 +72,32 @@
             margin: 8px 0 14px;
         }
         .card-title { font-size: 1rem; color: #ccc; font-weight: 600; }
+
+        /* Блок констант */
+        .invariants {
+            background: #12131c; border: 1px solid #2a2a3c; border-radius: 20px;
+            padding: 20px 16px; margin: 32px 0; text-align: center;
+        }
+        .invariants h3 {
+            font-size: 1.2rem; color: #fcb045; margin-bottom: 16px;
+        }
+        .invariant-list {
+            display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+        }
+        .invariant-item {
+            background: #0e0f16; border: 1px solid #2a2a3c; border-radius: 14px;
+            padding: 12px 18px; min-width: 130px; flex: 1 1 150px;
+        }
+        .invariant-symbol {
+            font-size: 1.6rem; font-weight: bold; color: #fcb045; margin-bottom: 4px;
+        }
+        .invariant-value {
+            font-size: 1rem; color: #ccc; margin-bottom: 2px;
+        }
+        .invariant-desc {
+            font-size: 0.8rem; color: #888;
+        }
+
         .accordion { margin: 20px 0; }
         .accordion-item {
             background: #12131c; border: 1px solid #2a2a3c; border-radius: 16px;
@@ -143,6 +169,33 @@
             <div class="old-formula">M = F / a</div>
             <div class="new-formula">M = m_node · N</div>
             <div class="card-title" data-i18n="m.short_title">Phase‑Volume Mass</div>
+        </div>
+    </div>
+
+    <!-- Fundamental Invariants -->
+    <div class="invariants">
+        <h3 data-i18n="invariants.heading">Fundamental Invariants</h3>
+        <div class="invariant-list">
+            <div class="invariant-item">
+                <div class="invariant-symbol">L</div>
+                <div class="invariant-value">3.7474 m</div>
+                <div class="invariant-desc" data-i18n="invariants.L_desc">Grid Step</div>
+            </div>
+            <div class="invariant-item">
+                <div class="invariant-symbol">F</div>
+                <div class="invariant-value">80 MHz</div>
+                <div class="invariant-desc" data-i18n="invariants.F_desc">Clock of the Universe</div>
+            </div>
+            <div class="invariant-item">
+                <div class="invariant-symbol">Φ</div>
+                <div class="invariant-value">1.618</div>
+                <div class="invariant-desc" data-i18n="invariants.Phi_desc">Golden Resonance</div>
+            </div>
+            <div class="invariant-item">
+                <div class="invariant-symbol">N</div>
+                <div class="invariant-value">Integer</div>
+                <div class="invariant-desc" data-i18n="invariants.N_desc">Number of Nodes</div>
+            </div>
         </div>
     </div>
 
