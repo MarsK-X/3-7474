@@ -67,7 +67,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 160px;  /* уменьшена высота примерно на треть от прежней */
+      min-height: 160px;
     }
     .card:hover { border-color: #fcb045; }
     .old-formula {
@@ -132,20 +132,39 @@
       color: #ccc;
     }
     .accordion-item.open .accordion-body {
-      max-height: 1200px; /* достаточно для длинного текста */
+      max-height: 2000px; /* достаточно для самого длинного текста */
       padding: 16px 20px;
     }
-    .level-block {
+
+    /* Переключатель уровня (табы) */
+    .level-switch {
+      display: flex;
+      gap: 8px;
       margin-bottom: 16px;
     }
-    .level-block h4 {
-      color: #fcb045;
-      margin-bottom: 6px;
+    .level-btn {
+      background: transparent;
+      border: 1px solid #444;
+      color: #aaa;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.2s;
     }
-    .level-block p {
+    .level-btn.active {
+      background: #fcb045;
+      border-color: #fcb045;
+      color: #0b0c10;
+      font-weight: bold;
+    }
+    .level-content {
+      display: none;
       line-height: 1.7;
       white-space: pre-wrap;
+      color: #ccc;
     }
+    .level-content.show { display: block; }
 
     /* Языковая панель */
     .lang-bar {
@@ -208,42 +227,36 @@
       <div class="accordion-item">
         <button class="accordion-header" data-i18n="accordion.grav">РЕЗОНАНСНОЕ УСКОРЕНИЕ (g) — Почему падает яблоко</button>
         <div class="accordion-body">
-          <div class="level-block">
-            <h4>Обыватель</h4>
-            <p data-i18n="g.layperson"></p>
+          <div class="level-switch">
+            <button class="level-btn active" onclick="switchLevel(this, 'g-layperson')">Обыватель</button>
+            <button class="level-btn" onclick="switchLevel(this, 'g-pro')">Профессионал</button>
           </div>
-          <div class="level-block">
-            <h4>Профессионал</h4>
-            <p data-i18n="g.pro"></p>
-          </div>
+          <div class="level-content show" id="g-layperson" data-i18n="g.layperson"></div>
+          <div class="level-content" id="g-pro" data-i18n="g.pro"></div>
         </div>
       </div>
       <!-- E -->
       <div class="accordion-item">
         <button class="accordion-header" data-i18n="accordion.energy">Энергия (E) — Почему мир «тикает»</button>
         <div class="accordion-body">
-          <div class="level-block">
-            <h4>Обыватель</h4>
-            <p data-i18n="e.layperson"></p>
+          <div class="level-switch">
+            <button class="level-btn active" onclick="switchLevel(this, 'e-layperson')">Обыватель</button>
+            <button class="level-btn" onclick="switchLevel(this, 'e-pro')">Профессионал</button>
           </div>
-          <div class="level-block">
-            <h4>Профессионал</h4>
-            <p data-i18n="e.pro"></p>
-          </div>
+          <div class="level-content show" id="e-layperson" data-i18n="e.layperson"></div>
+          <div class="level-content" id="e-pro" data-i18n="e.pro"></div>
         </div>
       </div>
       <!-- M -->
       <div class="accordion-item">
         <button class="accordion-header" data-i18n="accordion.mass">Масса (M) — Почему тело «есть»</button>
         <div class="accordion-body">
-          <div class="level-block">
-            <h4>Обыватель</h4>
-            <p data-i18n="m.layperson"></p>
+          <div class="level-switch">
+            <button class="level-btn active" onclick="switchLevel(this, 'm-layperson')">Обыватель</button>
+            <button class="level-btn" onclick="switchLevel(this, 'm-pro')">Профессионал</button>
           </div>
-          <div class="level-block">
-            <h4>Профессионал</h4>
-            <p data-i18n="m.pro"></p>
-          </div>
+          <div class="level-content show" id="m-layperson" data-i18n="m.layperson"></div>
+          <div class="level-content" id="m-pro" data-i18n="m.pro"></div>
         </div>
       </div>
     </div>
@@ -257,7 +270,7 @@
   </div>
 
   <script>
-    // Инициализация i18next
+    // инициализация i18next
     i18next
       .use(i18nextHttpBackend)
       .init({
@@ -284,13 +297,23 @@
       });
     }
 
-    // Логика аккордеона
+    // Аккордеон (раскрытие/закрытие)
     document.querySelectorAll('.accordion-header').forEach(btn => {
       btn.addEventListener('click', function() {
-        const item = this.parentElement;
-        item.classList.toggle('open');
+        this.parentElement.classList.toggle('open');
       });
     });
+
+    // Переключение вкладок внутри аккордеона
+    function switchLevel(btn, contentId) {
+      // Сброс активной кнопки и скрытие всех контентов в том же аккордеоне
+      const body = btn.closest('.accordion-body');
+      body.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+      body.querySelectorAll('.level-content').forEach(el => el.classList.remove('show'));
+      // Активация выбранной
+      btn.classList.add('active');
+      document.getElementById(contentId).classList.add('show');
+    }
   </script>
 </body>
 </html>
