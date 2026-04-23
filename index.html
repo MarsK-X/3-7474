@@ -80,6 +80,73 @@
             font-size: 1.5rem;
             margin-bottom: 0.75rem;
         }
+
+        /* Transition Blocks */
+        .transition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .transition-card {
+            background: #14141a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #2a2a35;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .shadow-formula {
+            color: #8b3a3a;
+            font-family: "Times New Roman", serif;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .shadow-formula::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 120%;
+            height: 3px;
+            background: #d32f2f;
+            transform: rotate(-15deg);
+            transform-origin: center;
+            opacity: 0.8;
+            animation: strike 0.8s ease-out forwards;
+        }
+        @keyframes strike {
+            from { width: 0; opacity: 0; }
+            to { width: 120%; opacity: 0.8; }
+        }
+        .transition-symbol {
+            font-size: 3rem;
+            color: #d4af37;
+            margin: 0.5rem 0;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; text-shadow: 0 0 5px #d4af37; }
+            50% { opacity: 1; text-shadow: 0 0 15px #ffd700; }
+            100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37; }
+        }
+        .genesis-formula {
+            font-size: 2rem;
+            color: #ffd700;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            text-shadow: 0 0 10px #d4af37;
+            margin-top: 0.5rem;
+        }
+        .transition-card p {
+            margin-top: 0.5rem;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        /* Triad cards (original) */
         .triad {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,10 +229,6 @@
             font-weight: 600;
             color: #d4af37;
         }
-        .highlight {
-            font-weight: 600;
-            color: #d4af37;
-        }
         .calculator {
             background: #14141a;
             border-radius: 12px;
@@ -230,7 +293,33 @@
             <a href="#">Test your telemetry. Find the L-invariant. #37474</a>
         </div>
 
-        <!-- The Triad -->
+        <!-- The Great Transition: Visual Deconstruction -->
+        <h2>The Great Transition: From Shadows to Genesis</h2>
+        <div class="transition-grid">
+            <!-- Gravity -->
+            <div class="transition-card">
+                <div class="shadow-formula">g = G·M / R²</div>
+                <div class="transition-symbol">⎊</div>
+                <div class="genesis-formula">g = L · Φ²</div>
+                <p>From "magic" mass to vacuum geometry.</p>
+            </div>
+            <!-- Energy -->
+            <div class="transition-card">
+                <div class="shadow-formula">E = M·c²</div>
+                <div class="transition-symbol">⎊</div>
+                <div class="genesis-formula">E = ħ · F · N</div>
+                <p>From burning matter to counting universal tacts.</p>
+            </div>
+            <!-- Mass -->
+            <div class="transition-card">
+                <div class="shadow-formula">M = F / a</div>
+                <div class="transition-symbol">⎊</div>
+                <div class="genesis-formula">M = m_node · N</div>
+                <p>From "weight" to phase volume of captured induction.</p>
+            </div>
+        </div>
+
+        <!-- The Triad (detailed) -->
         <h2>The Triad of IQG</h2>
         <div class="triad">
             <div class="card">
@@ -361,19 +450,16 @@
                 return;
             }
             const ratio = gObs / L;
-            // Allowed harmonics (n and sub)
             const harmonics = [0, 0.5, 1, 1.5, 2, 2.5, 3];
             const subHarmonics = [1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/14];
             let bestN = null;
             let bestPhiPow = null;
             let minDiff = Infinity;
-            // Check integer/half-integer n
             harmonics.forEach(n => {
                 const phiPow = Math.pow(phi, n);
                 const diff = Math.abs(ratio - phiPow);
                 if (diff < minDiff) { minDiff = diff; bestN = n; bestPhiPow = phiPow; }
             });
-            // Check subharmonics (display as "sub")
             subHarmonics.forEach(m => {
                 const diff = Math.abs(ratio - m);
                 if (diff < minDiff) { minDiff = diff; bestN = 'sub'; bestPhiPow = m; }
@@ -387,7 +473,6 @@
                 Deviation = ${deviation.toFixed(3)}%
             `;
         }
-        // Run on page load
         window.onload = calculateThomas;
     </script>
 </body>
