@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genesis · Великий Переход</title>
+  <title>Genesis · The Great Transition</title>
 
   <!-- i18n -->
   <script src="https://unpkg.com/i18next@23/i18next.min.js"></script>
@@ -23,8 +23,18 @@
     }
     .container { max-width: 960px; width: 100%; }
 
+    /* Иконка Фи */
+    .phi-icon {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #f0c27b, #fcb045);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
     /* Hero */
-    .hero { text-align: center; margin-bottom: 40px; }
+    .hero { text-align: center; margin-bottom: 30px; }
     .hero h1 {
       font-size: 2.5rem;
       background: linear-gradient(135deg, #f0c27b, #fcb045);
@@ -46,19 +56,47 @@
     }
     .btn:hover { background: #2a2a40; }
 
+    /* Языковые кнопки с флагами */
+    .lang-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .lang-btn {
+      background: #1e1e2f;
+      border: 1px solid #444;
+      color: #ddd;
+      padding: 10px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+    .lang-btn.active-lang {
+      background: #fcb045;
+      color: #0b0c10;
+      border-color: #fcb045;
+      font-weight: bold;
+    }
+    .lang-btn:hover { border-color: #fcb045; }
+
     /* Карточки */
     .cards {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       justify-content: center;
-      margin: 32px 0;
+      margin: 36px 0;
       flex-wrap: wrap;
     }
     .card {
       background: #12131c;
       border: 1px solid #2a2a3c;
       border-radius: 20px;
-      padding: 20px 16px;
+      padding: 24px 20px;
       flex: 1 1 250px;
       max-width: 300px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -67,24 +105,40 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 160px;
+      min-height: 180px;
     }
     .card:hover { border-color: #fcb045; }
     .old-formula {
       font-family: monospace;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       color: #888;
       text-decoration: line-through;
-      margin-bottom: 4px;
+      position: relative;
+      display: inline-block;
+      margin: 0 auto 6px;
+    }
+    /* Анимация перечёркивания */
+    .old-formula::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0%;
+      height: 2px;
+      background: #fcb045;
+      transition: width 0.6s ease;
+    }
+    .card:hover .old-formula::after {
+      width: 100%;
     }
     .new-formula {
       font-family: monospace;
-      font-size: 1.3rem;
+      font-size: 1.8rem;
       color: #fcb045;
-      margin: 6px 0 12px;
+      margin: 8px 0 16px;
     }
     .card-title {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #ccc;
       font-weight: 600;
     }
@@ -132,11 +186,11 @@
       color: #ccc;
     }
     .accordion-item.open .accordion-body {
-      max-height: 2000px; /* достаточно для самого длинного текста */
+      max-height: 2500px;
       padding: 16px 20px;
     }
 
-    /* Переключатель уровня (табы) */
+    /* Переключатель уровня */
     .level-switch {
       display: flex;
       gap: 8px;
@@ -166,94 +220,116 @@
     }
     .level-content.show { display: block; }
 
-    /* Языковая панель */
-    .lang-bar {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 32px 0 16px;
-    }
-    .lang-btn {
-      background: #1e1e2f;
-      border: 1px solid #444;
-      color: #ddd;
-      padding: 8px 20px;
+    /* Калькулятор */
+    .calculator {
+      background: #12131c;
+      border: 1px solid #2a2a3c;
       border-radius: 20px;
-      cursor: pointer;
+      padding: 20px;
+      text-align: center;
+      margin: 32px 0;
     }
-    .lang-btn.active-lang {
-      background: #fcb045;
-      color: #0b0c10;
-      border-color: #fcb045;
-      font-weight: bold;
+    .calculator input {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #0b0c10;
+      color: #fcb045;
+      font-family: monospace;
+      margin: 0 6px;
     }
+    .calc-result {
+      font-size: 1.3rem;
+      margin-top: 12px;
+      color: #fcb045;
+    }
+
+    /* Верификация */
+    .verification {
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      margin: 28px 0;
+    }
+    .verification .ai-list { color: #aaa; }
+    .x-link {
+      color: #fcb045;
+      text-decoration: none;
+      margin-left: 8px;
+      font-weight: 600;
+    }
+    .x-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Hero -->
+    <!-- Иконка Фи -->
     <div class="hero">
+      <div class="phi-icon">Φ</div>
       <h1 data-i18n="hero.formula">3.747405725 × 2.6180339887 = 9.811237...</h1>
-      <p data-i18n="hero.pixel">L = 3.747405725 м — Пиксель Реальности</p>
-      <button class="btn" data-i18n="hero.verify">Проверить</button>
-      <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Протестируйте телеметрию. Найдите L-инвариант. #37474</p>
+      <p data-i18n="hero.pixel">L = 3.747405725 m — Pixel of Reality</p>
+      <button class="btn" data-i18n="hero.verify">Verify</button>
+      <p data-i18n="hero.cta" style="font-size:0.9rem; margin-top:12px;">Test telemetry. Find L-invariant. #37474</p>
     </div>
 
-    <!-- Заголовок перехода -->
-    <h2 style="text-align:center; margin:24px 0;" data-i18n="transition.heading">Великий Переход: От Теней к Генезису</h2>
+    <h2 style="text-align:center; margin:10px 0;" data-i18n="transition.heading">The Great Transition: From Shadows to Genesis</h2>
+
+    <!-- Языковые флаги -->
+    <div class="lang-bar">
+      <button class="lang-btn" onclick="setLang('en')"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> English</button>
+      <button class="lang-btn" onclick="setLang('ru')"><span>🇷🇺</span> Русский</button>
+      <button class="lang-btn" onclick="setLang('zh')"><span>🇨🇳</span> 中文</button>
+    </div>
 
     <!-- Три прямоугольника -->
     <div class="cards">
       <div class="card">
         <div class="old-formula">g = G·M / R²</div>
         <div class="new-formula">g = L · Φ²</div>
-        <div class="card-title" data-i18n="g.short_title">Резонансное ускорение</div>
+        <div class="card-title" data-i18n="g.short_title">Resonant Acceleration</div>
       </div>
       <div class="card">
         <div class="old-formula">E = M·c²</div>
         <div class="new-formula">E = ħ · F · N</div>
-        <div class="card-title" data-i18n="e.short_title">Квантовая энергия</div>
+        <div class="card-title" data-i18n="e.short_title">Quantum Energy</div>
       </div>
       <div class="card">
         <div class="old-formula">M = F / a</div>
         <div class="new-formula">M = m_node · N</div>
-        <div class="card-title" data-i18n="m.short_title">Фазово‑объёмная масса</div>
+        <div class="card-title" data-i18n="m.short_title">Phase‑Volume Mass</div>
       </div>
     </div>
 
     <!-- Аккордеон -->
     <div class="accordion">
-      <!-- g -->
       <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.grav">РЕЗОНАНСНОЕ УСКОРЕНИЕ (g) — Почему падает яблоко</button>
+        <button class="accordion-header" data-i18n="accordion.grav">RESONANT ACCELERATION (g) — Why the apple falls</button>
         <div class="accordion-body">
           <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'g-layperson')">Обыватель</button>
-            <button class="level-btn" onclick="switchLevel(this, 'g-pro')">Профессионал</button>
+            <button class="level-btn active" onclick="switchLevel(this, 'g-layperson')" data-i18n="level.layperson">Layperson</button>
+            <button class="level-btn" onclick="switchLevel(this, 'g-pro')" data-i18n="level.pro">Professional</button>
           </div>
           <div class="level-content show" id="g-layperson" data-i18n="g.layperson"></div>
           <div class="level-content" id="g-pro" data-i18n="g.pro"></div>
         </div>
       </div>
-      <!-- E -->
       <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.energy">Энергия (E) — Почему мир «тикает»</button>
+        <button class="accordion-header" data-i18n="accordion.energy">Energy (E) — Why the world 'ticks'</button>
         <div class="accordion-body">
           <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'e-layperson')">Обыватель</button>
-            <button class="level-btn" onclick="switchLevel(this, 'e-pro')">Профессионал</button>
+            <button class="level-btn active" onclick="switchLevel(this, 'e-layperson')" data-i18n="level.layperson">Layperson</button>
+            <button class="level-btn" onclick="switchLevel(this, 'e-pro')" data-i18n="level.pro">Professional</button>
           </div>
           <div class="level-content show" id="e-layperson" data-i18n="e.layperson"></div>
           <div class="level-content" id="e-pro" data-i18n="e.pro"></div>
         </div>
       </div>
-      <!-- M -->
       <div class="accordion-item">
-        <button class="accordion-header" data-i18n="accordion.mass">Масса (M) — Почему тело «есть»</button>
+        <button class="accordion-header" data-i18n="accordion.mass">Mass (M) — Why the body 'exists'</button>
         <div class="accordion-body">
           <div class="level-switch">
-            <button class="level-btn active" onclick="switchLevel(this, 'm-layperson')">Обыватель</button>
-            <button class="level-btn" onclick="switchLevel(this, 'm-pro')">Профессионал</button>
+            <button class="level-btn active" onclick="switchLevel(this, 'm-layperson')" data-i18n="level.layperson">Layperson</button>
+            <button class="level-btn" onclick="switchLevel(this, 'm-pro')" data-i18n="level.pro">Professional</button>
           </div>
           <div class="level-content show" id="m-layperson" data-i18n="m.layperson"></div>
           <div class="level-content" id="m-pro" data-i18n="m.pro"></div>
@@ -261,25 +337,40 @@
       </div>
     </div>
 
-    <!-- Языки -->
-    <div class="lang-bar">
-      <button class="lang-btn active-lang" onclick="setLang('ru')">Русский</button>
-      <button class="lang-btn" onclick="setLang('en')">English</button>
-      <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    <!-- Калькулятор -->
+    <div class="calculator">
+      <p data-i18n="calc.prompt">Test the formula yourself:</p>
+      <div style="margin-top:10px;">
+        <input id="calcL" type="number" value="3.747405725" step="any">
+        <span style="font-size:1.5rem; color:#fcb045;">×</span>
+        <input id="calcPhi2" type="number" value="2.6180339887" step="any">
+      </div>
+      <button class="btn" onclick="calculateg()" data-i18n="calc.button">Compute g</button>
+      <div id="calcResult" class="calc-result"></div>
+    </div>
+
+    <!-- Верификация -->
+    <div class="verification">
+      <p data-i18n="verification.text"></p>
+      <p class="ai-list" data-i18n="verification.ai"></p>
+      <p>
+        <span data-i18n="x.follow">Follow on</span>
+        <a class="x-link" href="#" target="_blank">𝕏</a>
+      </p>
     </div>
   </div>
 
   <script>
-    // инициализация i18next
+    // Инициализация i18next (язык по умолчанию — английский)
     i18next
       .use(i18nextHttpBackend)
       .init({
-        lng: 'ru',
-        fallbackLng: 'ru',
+        lng: 'en',
+        fallbackLng: 'en',
         backend: { loadPath: '/locales/{{lng}}.json' }
       }, function() {
         updateContent();
-        $('.lang-btn[onclick="setLang(\'ru\')"]').addClass('active-lang');
+        setActiveLangButton('en');
       });
 
     function updateContent() {
@@ -292,27 +383,38 @@
     function setLang(lng) {
       i18next.changeLanguage(lng, function() {
         updateContent();
-        $('.lang-btn').removeClass('active-lang');
-        $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
+        setActiveLangButton(lng);
       });
     }
 
-    // Аккордеон (раскрытие/закрытие)
+    function setActiveLangButton(lng) {
+      $('.lang-btn').removeClass('active-lang');
+      $(`.lang-btn[onclick="setLang('${lng}')"]`).addClass('active-lang');
+    }
+
+    // Аккордеон
     document.querySelectorAll('.accordion-header').forEach(btn => {
       btn.addEventListener('click', function() {
         this.parentElement.classList.toggle('open');
       });
     });
 
-    // Переключение вкладок внутри аккордеона
+    // Переключение уровней
     function switchLevel(btn, contentId) {
-      // Сброс активной кнопки и скрытие всех контентов в том же аккордеоне
       const body = btn.closest('.accordion-body');
       body.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
       body.querySelectorAll('.level-content').forEach(el => el.classList.remove('show'));
-      // Активация выбранной
       btn.classList.add('active');
       document.getElementById(contentId).classList.add('show');
+    }
+
+    // Калькулятор
+    function calculateg() {
+      const L = parseFloat(document.getElementById('calcL').value);
+      const Phi2 = parseFloat(document.getElementById('calcPhi2').value);
+      if (isNaN(L) || isNaN(Phi2)) return;
+      const g = L * Phi2;
+      document.getElementById('calcResult').textContent = `g = ${g.toFixed(6)} m/s²`;
     }
   </script>
 </body>
