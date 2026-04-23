@@ -108,7 +108,9 @@
     .accordion-body {
       max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
       background: var(--bg-dark); padding: 0 20px; color: #ccc;
+      line-height: 1.7; /* улучшена читаемость */
     }
+    .accordion-body p { margin-bottom: 1em; } /* отступы между абзацами */
     .accordion-item.open .accordion-body { max-height: 2500px; padding: 16px 20px; }
     .level-switch { display: flex; gap: 8px; margin-bottom: 16px; }
     .level-btn {
@@ -161,6 +163,33 @@
     .x-link { color: var(--gold); text-decoration: none; margin-left: 8px; font-weight: 600; }
     .x-link:hover { text-decoration: underline; }
     .hash { color: var(--gold); font-weight: 600; }
+
+    /* ===== АДАПТИВНЫЕ ПРАВКИ ДЛЯ ТЕЛЕФОНОВ ===== */
+    @media (max-width: 600px) {
+      body { padding: 20px 12px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero p { font-size: 0.9rem; }
+      .phi-icon { font-size: 2rem; }
+      .lang-btn { padding: 8px 12px; font-size: 0.85rem; gap: 4px; }
+      .cards { gap: 16px; margin: 24px 0; }
+      .card { flex: 1 1 100%; max-width: 100%; min-height: auto; }
+      .old-formula { font-size: 1.2rem; }
+      .new-formula { font-size: 1.4rem; }
+      .invariants h3 { font-size: 1rem; }
+      .invariant-item { min-width: 100px; padding: 8px 10px; }
+      .invariant-symbol { font-size: 1.3rem; }
+      .accordion-header { font-size: 1rem; padding: 14px 16px; }
+      .level-btn { padding: 6px 14px; font-size: 0.85rem; }
+      .essay-block { padding: 20px 14px; font-size: 0.9rem; }
+      .essay-block h3 { font-size: 1.1rem; }
+      .essay-block h4 { font-size: 1rem; }
+      .mirror-block h3 { font-size: 1.1rem; }
+      .mirror-item { flex: 1 1 100%; max-width: 100%; }
+      .mirror-item .object { font-size: 1rem; }
+      .mirror-item .nodes { font-size: 0.85rem; }
+      .mirror-item .energy { font-size: 0.8rem; }
+      .mirror-footer { font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
@@ -243,10 +272,8 @@
     </div>
   </div>
 
-  <!-- Новый блок эссе (после аккордеона) -->
   <div class="essay-block" data-i18n="essay.html" id="essay-block"></div>
 
-  <!-- Квантовое зеркало (после эссе) -->
   <div class="mirror-block" id="quantum-mirror">
     <h3 data-i18n="mirror.heading">THE WEIGHT OF THE DANCE</h3>
     <p class="subtitle" data-i18n="mirror.subtitle">What hides behind kilograms</p>
