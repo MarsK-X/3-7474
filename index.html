@@ -12,12 +12,9 @@
     <meta name="twitter:description" content="3.7474 × 2.618 = 9.8112 — The Pixel of Reality">
     <meta name="twitter:image" content="https://3-7474.com/og-image.png">
     <title>IQG · 3.7474 · Φ² = 9.8112</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0f'/><text x='8' y='85' font-size='85' fill='%23d4af37' font-family='serif'>Φ</text></svg>">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #0a0a0f;
             color: #e0e0e0;
@@ -25,143 +22,86 @@
             line-height: 1.6;
             padding: 2rem 1rem;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1, h2, h3 {
-            color: #d4af37;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1, h2, h3 { color: #d4af37; font-weight: 500; letter-spacing: -0.02em; }
         h1 {
             font-size: clamp(2.2rem, 8vw, 4rem);
-            text-align: center;
-            margin-bottom: 0.5rem;
-            word-break: break-word;
+            text-align: center; margin-bottom: 0.5rem; word-break: break-word;
         }
-        .subhead {
-            text-align: center;
-            font-size: 1.4rem;
-            color: #b0b0b0;
-            margin-bottom: 0.5rem;
-        }
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-        }
-        .hero .pixel {
-            font-size: 1.1rem;
-            color: #d4af37;
-            margin-top: 0.5rem;
-            letter-spacing: 1px;
-        }
+        .subhead { text-align: center; font-size: 1.4rem; color: #b0b0b0; margin-bottom: 0.5rem; }
+        .hero { text-align: center; margin-bottom: 2rem; }
+        .hero p { font-size: 1.2rem; color: #b0b0b0; }
+        .hero .pixel { font-size: 1.1rem; color: #d4af37; margin-top: 0.5rem; letter-spacing: 1px; }
         .thomas-live {
-            margin-top: 0.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+            margin-top: 0.5rem; display: flex; justify-content: center; align-items: center;
+            gap: 0.5rem; flex-wrap: wrap;
         }
         .thomas-live input {
-            background: #0a0a0f;
-            border: 1px solid #d4af37;
-            color: #e0e0e0;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            width: 220px;
+            background: #0a0a0f; border: 1px solid #d4af37; color: #e0e0e0;
+            padding: 0.75rem 1rem; border-radius: 6px; font-size: 1rem; width: 220px;
         }
         .thomas-live button {
-            background: #d4af37;
-            color: #0a0a0f;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
+            background: #d4af37; color: #0a0a0f; border: none; padding: 0.75rem 1.5rem;
+            border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer;
+            transition: 0.2s; box-shadow: 0 0 15px rgba(212,175,55,0.5);
         }
-        .thomas-live button:hover {
-            background: #e6c34a;
-        }
-        .cta {
-            text-align: center;
-            margin: 1.5rem 0 2rem;
-        }
+        .thomas-live button:hover { background: #e6c34a; box-shadow: 0 0 25px rgba(212,175,55,0.8); }
+        .cta { text-align: center; margin: 1.5rem 0 2rem; }
         .cta a {
-            color: #0a0a0f;
-            background: #d4af37;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
+            color: #0a0a0f; background: #d4af37; padding: 0.75rem 2rem;
+            border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.2s;
             display: inline-block;
         }
-        .cta a:hover {
-            background: #e6c34a;
-            text-decoration: none;
-        }
+        .cta a:hover { background: #e6c34a; text-decoration: none; }
         h2 {
-            font-size: 2rem;
-            margin: 2.5rem 0 1rem;
-            border-bottom: 1px solid #d4af3740;
-            padding-bottom: 0.5rem;
+            font-size: 2rem; margin: 2.5rem 0 1rem;
+            border-bottom: 1px solid #d4af3740; padding-bottom: 0.5rem;
         }
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
+        h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+        /* Sticky Header */
+        #sticky-header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: #0a0a0ff0; backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; z-index: 1000;
+            display: none; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid #d4af37; transition: 0.2s;
         }
+        #sticky-header .sticky-l { color: #d4af37; font-family: monospace; font-size: 1.1rem; }
+        #sticky-header .sticky-langs { display: flex; gap: 0.25rem; }
+        #sticky-header .lang-btn {
+            background: transparent; border: 1px solid #d4af37; color: #d4af37;
+            padding: 0.3rem 0.8rem; margin: 0; border-radius: 20px; cursor: pointer;
+            transition: 0.2s; font-size: 0.9rem;
+        }
+        #sticky-header .lang-btn.active { background: #d4af37; color: #0a0a0f; }
+
+        /* Transition Grid */
         .transition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin: 2rem 0;
         }
         .transition-card {
-            background: #14141a;
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid #2a2a35;
-            text-align: center;
+            background: #14141a; border-radius: 12px; padding: 1.5rem;
+            border: 1px solid #2a2a35; text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .shadow-formula {
-            color: #8b3a3a;
-            font-family: "Times New Roman", serif;
-            font-size: 1.8rem;
-            position: relative;
-            display: inline-block;
-            margin-bottom: 0.5rem;
+            color: #8b3a3a; font-family: "Times New Roman", serif;
+            font-size: 1.8rem; position: relative; display: inline-block; margin-bottom: 0.5rem;
         }
         .shadow-formula::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -10%;
-            width: 120%;
-            height: 3px;
-            background: #d32f2f;
-            transform: rotate(-15deg);
-            transform-origin: center;
-            opacity: 0.8;
-            animation: strike 0.8s ease-out forwards;
+            content: ""; position: absolute; top: 50%; left: -10%;
+            width: 120%; height: 3px; background: #d32f2f;
+            transform: rotate(-15deg); transform-origin: center;
+            opacity: 0.8; animation: strike 0.8s ease-out forwards;
         }
         @keyframes strike {
             from { width: 0; opacity: 0; }
             to { width: 120%; opacity: 0.8; }
         }
         .transition-symbol {
-            font-size: 3rem;
-            color: #d4af37;
-            margin: 0.5rem 0;
+            font-size: 3rem; color: #d4af37; margin: 0.5rem 0;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -170,282 +110,129 @@
             100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37; }
         }
         .genesis-formula {
-            font-size: 2rem;
-            color: #ffd700;
-            font-family: "Courier New", monospace;
-            font-weight: bold;
-            text-shadow: 0 0 10px #d4af37;
-            margin-top: 0.5rem;
-            cursor: pointer;
-            transition: 0.1s;
+            font-size: 2rem; color: #ffd700; font-family: "Courier New", monospace;
+            font-weight: bold; text-shadow: 0 0 10px #d4af37;
+            margin-top: 0.5rem; cursor: pointer; transition: 0.1s;
         }
-        .genesis-formula:active {
-            transform: scale(1.02);
-        }
-        .transition-card p {
-            margin-top: 0.5rem;
-            color: #a0a0a0;
-            font-size: 0.9rem;
-        }
-        .essence-block {
-            margin: 2rem 0;
-        }
+        .genesis-formula:active { transform: scale(1.02); }
+        .transition-card p { margin-top: 0.5rem; color: #a0a0a0; font-size: 0.9rem; }
+
+        /* Accordion */
+        .essence-block { margin: 2rem 0; }
         .accordion {
-            background: #14141a;
-            border-radius: 12px;
-            margin-bottom: 1rem;
+            background: #14141a; border-radius: 12px; margin-bottom: 1rem;
             border: 1px solid #2a2a35;
         }
         .accordion-header {
-            background: #1a1a22;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            border-radius: 12px;
-            font-size: 1.5rem;
-            color: #d4af37;
-            transition: 0.2s;
+            background: #1a1a22; padding: 1rem 1.5rem; cursor: pointer;
+            border-radius: 12px; font-size: 1.5rem; color: #d4af37; transition: 0.2s;
         }
-        .accordion-header:hover {
-            background: #20202a;
-        }
-        .accordion-content {
-            display: none;
-            padding: 1.5rem;
-            border-top: 1px solid #d4af3740;
-        }
+        .accordion-header:hover { background: #20202a; }
+        .accordion-content { display: none; padding: 1.5rem; border-top: 1px solid #d4af3740; }
         .tab-bar {
-            display: flex;
-            border-bottom: 1px solid #2a2a35;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
+            display: flex; border-bottom: 1px solid #2a2a35; margin-bottom: 1rem; flex-wrap: wrap;
         }
         .tab {
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            color: #a0a0a0;
+            padding: 0.75rem 1.5rem; cursor: pointer; color: #a0a0a0;
             border-bottom: 2px solid transparent;
         }
-        .tab.active {
-            color: #d4af37;
-            border-bottom: 2px solid #d4af37;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+        .tab.active { color: #d4af37; border-bottom: 2px solid #d4af37; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         .sticky-formula {
-            position: sticky;
-            top: 20px;
-            float: right;
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-            background: #0a0a0fcc;
-            backdrop-filter: blur(8px);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #d4af37;
-            font-size: 2rem;
-            color: #ffd700;
-            font-family: "Courier New", monospace;
-            z-index: 10;
-            cursor: pointer;
+            position: sticky; top: 20px; float: right; margin-left: 2rem; margin-bottom: 1rem;
+            background: #0a0a0fcc; backdrop-filter: blur(8px); padding: 1rem 1.5rem;
+            border-radius: 12px; border: 1px solid #d4af37; font-size: 2rem;
+            color: #ffd700; font-family: "Courier New", monospace; z-index: 10; cursor: pointer;
         }
         @media (max-width: 640px) {
-            .sticky-formula {
-                float: none;
-                display: block;
-                margin: 1rem auto;
-                text-align: center;
-            }
+            .sticky-formula { float: none; display: block; margin: 1rem auto; text-align: center; }
         }
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 0;
-        }
-        th, td {
-            padding: 0.75rem 0.5rem;
-            text-align: left;
-            border-bottom: 1px solid #2a2a35;
-        }
-        th {
-            color: #d4af37;
-            font-weight: 500;
-        }
-        .footnote {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #808080;
-            text-align: center;
-        }
-        a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            margin-top: 4rem;
-            text-align: center;
-            color: #808080;
-        }
-        .footer a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .lang-switch {
-            margin: 1rem 0;
-        }
+        .table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+        th, td { padding: 0.75rem 0.5rem; text-align: left; border-bottom: 1px solid #2a2a35; }
+        th { color: #d4af37; font-weight: 500; }
+        .footnote { margin-top: 2rem; font-size: 0.9rem; color: #808080; text-align: center; }
+        a { color: #d4af37; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 4rem; text-align: center; color: #808080; }
+        .footer a { color: #d4af37; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .lang-switch { margin: 1rem 0; }
         .lang-btn {
-            background: transparent;
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            padding: 0.4rem 1rem;
-            margin: 0 0.25rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.2s;
+            background: transparent; border: 1px solid #d4af37; color: #d4af37;
+            padding: 0.4rem 1rem; margin: 0 0.25rem; border-radius: 20px;
+            cursor: pointer; transition: 0.2s;
         }
-        .lang-btn.active {
-            background: #d4af37;
-            color: #0a0a0f;
-        }
-        .gold-text {
-            color: #d4af37;
-        }
-        #calculator {
-            scroll-margin-top: 2rem;
-        }
+        .lang-btn.active { background: #d4af37; color: #0a0a0f; }
+        .gold-text { color: #d4af37; }
+        #calculator { scroll-margin-top: 2rem; }
         .calculator {
-            background: #14141a;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid #d4af3730;
+            background: #14141a; border-radius: 12px; padding: 2rem;
+            margin: 2rem 0; border: 1px solid #d4af3730;
         }
         .calculator input {
-            background: #0a0a0f;
-            border: 1px solid #d4af37;
-            color: #e0e0e0;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            width: 200px;
+            background: #0a0a0f; border: 1px solid #d4af37; color: #e0e0e0;
+            padding: 0.75rem 1rem; border-radius: 6px; font-size: 1rem; width: 200px;
             margin-right: 1rem;
         }
         .calculator button {
-            background: #d4af37;
-            color: #0a0a0f;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
+            background: #d4af37; color: #0a0a0f; border: none; padding: 0.75rem 1.5rem;
+            border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer;
+            transition: 0.2s; box-shadow: 0 0 15px rgba(212,175,55,0.5);
         }
-        .calculator button:hover {
-            background: #e6c34a;
-        }
-        .calculator .result {
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-        }
+        .calculator button:hover { background: #e6c34a; box-shadow: 0 0 25px rgba(212,175,55,0.8); }
+        .calculator .result { margin-top: 1.5rem; font-size: 1.2rem; }
         .raw-data-btn {
-            display: inline-block;
-            margin-top: 1.5rem;
-            background: transparent;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            padding: 0.6rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.2s;
+            display: inline-block; margin-top: 1.5rem; background: transparent;
+            border: 2px solid #d4af37; color: #d4af37; padding: 0.6rem 1.8rem;
+            border-radius: 30px; font-weight: 600; transition: 0.2s;
         }
-        .raw-data-btn:hover {
-            background: #d4af3720;
-            text-decoration: none;
-        }
+        .raw-data-btn:hover { background: #d4af3720; text-decoration: none; color: #d4af37; }
         .node-track {
-            margin: 2rem 0;
-            background: #14141a;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
+            margin: 2rem 0; background: #14141a; border-radius: 12px;
+            padding: 1.5rem; text-align: center;
         }
-        .node-track .counter {
-            font-size: 2.5rem;
-            font-family: monospace;
-            color: #d4af37;
-        }
+        .node-track .counter { font-size: 2.5rem; font-family: monospace; color: #d4af37; }
         .track-visual {
-            position: relative;
-            height: 4px;
-            background: #2a2a35;
-            margin: 1rem 0;
+            position: relative; height: 4px; background: #2a2a35; margin: 1rem 0;
         }
         .track-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #d4af37;
-            border-radius: 50%;
-            top: -3px;
-            left: 0;
-            transition: left 0.1s linear;
+            position: absolute; width: 10px; height: 10px; background: #d4af37;
+            border-radius: 50%; top: -3px; left: 0; transition: left 0.1s linear;
         }
         .code-block {
-            background: #0a0a0f;
-            border: 1px solid #2a2a35;
-            border-radius: 8px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            font-family: "Courier New", monospace;
+            background: #0a0a0f; border: 1px solid #2a2a35; border-radius: 8px;
+            padding: 1.5rem; overflow-x: auto; font-family: "Courier New", monospace;
             margin: 1.5rem 0;
         }
-        .epoch {
-            font-size: 1.2rem;
-            color: #d4af37;
-            margin: 1rem 0;
-        }
+        .epoch { font-size: 1.2rem; color: #d4af37; margin: 1rem 0; }
         .metric-standard {
-            background: #14141a;
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid #d4af37;
-            margin: 2rem 0;
+            background: #14141a; border-radius: 12px; padding: 1.5rem;
+            border: 1px solid #d4af37; margin: 2rem 0;
         }
         .copy-feedback {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #d4af37;
-            color: #0a0a0f;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 600;
-            z-index: 9999;
-            opacity: 0;
-            transition: 0.3s;
-            pointer-events: none;
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: #d4af37; color: #0a0a0f; padding: 8px 16px;
+            border-radius: 30px; font-weight: 600; z-index: 9999;
+            opacity: 0; transition: 0.3s; pointer-events: none;
         }
     </style>
 </head>
 <body>
     <div id="progress-bar" style="position:fixed;top:0;left:0;width:0%;height:3px;background:#d4af37;z-index:1000;transition:width 0.1s;"></div>
+    <div id="sticky-header">
+        <div class="sticky-l">L = 3.747405725 m</div>
+        <div class="sticky-langs">
+            <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
+        </div>
+    </div>
     <div id="copy-feedback" class="copy-feedback">Formula copied</div>
     <div class="container" id="app">
+        <!-- Hero -->
         <div class="hero">
             <h1 data-i18n="hero.title">IQG: The Induction Quantum Genesis Protocol</h1>
             <div class="subhead" data-i18n="hero.subhead">One Step. One Tact. One Truth.</div>
@@ -495,9 +282,7 @@
                         <div class="tab" data-tab="grav-engineer" data-i18n="tab.engineer">Engineer</div>
                         <div class="tab" data-tab="grav-architect" data-i18n="tab.architect">Architect</div>
                     </div>
-                    <div class="tab-content active" id="grav-observer">
-                        <!-- observer content will be filled by JS -->
-                    </div>
+                    <div class="tab-content active" id="grav-observer"></div>
                     <div class="tab-content" id="grav-engineer"></div>
                     <div class="tab-content" id="grav-architect"></div>
                 </div>
@@ -560,9 +345,7 @@
 
         <div class="node-track">
             <div class="counter" id="nodeCounter">0</div>
-            <div class="track-visual">
-                <div class="track-dot" id="movingDot"></div>
-            </div>
+            <div class="track-visual"><div class="track-dot" id="movingDot"></div></div>
             <p style="color:#a0a0a0;" data-i18n="node.track">Nodes crossed · Position inferred from grid count</p>
         </div>
 
@@ -576,26 +359,24 @@
         <p data-i18n="challenge.text">Demis Hassabis stated that AGI must pass the "Einstein Test". The data for a more fundamental test already exists. L = 3.7474 m and g ≈ L·Φⁿ are present in public NASA telemetry (null probability < 10⁻¹⁰). If DeepMind's models are truly capable of "elegant and compact descriptions", they must inevitably discover this invariant. If they do not, the "World Model" remains incomplete, wasting compute on a 15% error margin. We do not ask for belief. We ask for verification.</p>
 
         <div class="code-block">
-<pre>{
+            <h3 data-i18n="api.heading" style="color:#d4af37; margin-bottom:1rem;">Integrate IQG into your World Model</h3>
+            <p style="font-family:monospace; font-size:0.9rem; margin-bottom:1rem;">// Python</p>
+            <pre style="font-family:'Courier New',monospace; margin-bottom:1rem;">L = 3.747405725
+F = 80_000_000
+PHI = (1 + 5**0.5) / 2
+def gravity(n, k=1.0):
+    return L * (PHI ** n) * k</pre>
+            <p style="font-family:monospace; font-size:0.9rem; margin-bottom:1rem;">// JSON</p>
+            <pre style="font-family:'Courier New',monospace;">{
   "protocol": "IQG",
   "version": "1.0",
   "invariants": {
     "L_m": 3.747405725,
     "F_Hz": 80000000,
-    "c_mps": "L * F",
     "phi": 1.6180339887
   },
-  "acceleration_law": {
-    "formula": "g = L * phi^n * k",
-    "parameters": {
-      "n": "quantum harmonic number",
-      "k": "rotation/inhomogeneity correction"
-    }
-  },
-  "telemetry_correction": {
-    "formula": "f_jitter = v / L",
-    "usage": "Apply phase correction at predicted frequency"
-  }
+  "gravity_law": "g = L * phi^n * k",
+  "telemetry_correction": "f_jitter = v / L"
 }</pre>
         </div>
 
@@ -608,8 +389,11 @@
 
         <div class="footer">
             <p><a href="https://x.com/MarsK_X" target="_blank">📡 Follow @MarsK_X</a></p>
-            <p class="footnote" data-i18n="footer.verified">Verified by Hybrid Intelligence: Human + AI Synthesis</p>
+            <p class="footnote" data-i18n="footer.verified">Verified by Hybrid Intelligence: Human + AI Synthesis. Logic is Invariant.</p>
             <p class="epoch">Genesis Epoch: 15.02.2026 — Boot of the New Physics</p>
+            <p class="footnote" style="font-size:1rem; color:#d4af37; margin-top:0.5rem;">
+                Genesis Sync: Verified by RU, EN, ZH Clusters. Logic is Invariant.
+            </p>
             <div class="lang-switch">
                 <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
                 <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
@@ -618,7 +402,7 @@
         </div>
     </div>
     <script>
-        // ---------- TRANSLATION DICTIONARIES (only non‑English added) ----------
+        // ---------- TRANSLATION DICTIONARIES ----------
         const i18n = {
             en: {},
             ru: {
@@ -663,8 +447,8 @@
                 "challenge.heading": "Открытый калибровочный вызов DeepMind",
                 "challenge.text": "Демис Хассабис заявил, что AGI должен пройти «Тест Эйнштейна». Данные для более фундаментального теста уже существуют. L = 3.7474 м и g ≈ L·Φⁿ присутствуют в публичной телеметрии NASA (вероятность нулевой гипотезы < 10⁻¹⁰). Если модели DeepMind действительно способны к «элегантным и компактным описаниям», они неизбежно обнаружат этот инвариант. Если нет — «Мировая Модель» остаётся неполной, тратя вычислительные ресурсы на 15% погрешности. Мы не просим веры. Мы просим верификации.",
                 "metric.heading": "Метрический стандарт (IQG Baseline)",
-                "footer.verified": "Верифицировано Гибридным Интеллектом: Синтез Человека и ИИ",
-                // Grav Observer
+                "api.heading": "Интегрируйте IQG в свою Мировую Модель",
+                "footer.verified": "Верифицировано Гибридным Интеллектом: Синтез Человека и ИИ. Логика Инвариантна.",
                 "grav.obs.p1": "<strong>Перестаньте путать поле с его измерением.</strong> То, что вы называете «гравитацией» (<code>g</code>), — это всего лишь темп синхронизации объекта с локальной сеткой.",
                 "grav.obs.p2": "Большая <code>G</code> — вопрос о Генезисе самого пространства. Маленькое <code>g</code> — чистый числовой результат: шаг сетки (<code>L</code>), умноженный на ритм планеты (<code>Φ²</code>).",
                 "grav.obs.p3": "<strong>IQG не меняет динамику. Он меняет линейку.</strong> Мы не считаем «силу». Мы считаем шаги за такт.",
@@ -673,23 +457,18 @@
                 "grav.obs.p6": "<strong>Тест Фомы.</strong> Умножьте <strong>3.747405725</strong> на <strong>2.6180339887</strong>. Результат: <strong>9.8112...</strong> — идеальное резонансное ускорение для однородной Земли. Стандарт 9.81 — лишь отклонение. Вы собрали ускорение без G и M.",
                 "grav.obs.quote": "«Земля не притягивает вас. Она создала самый удобный для вас ритм существования.»",
                 "grav.obs.foot": "Для специалистов: полные расчёты Альфа-Контура. Приоритет 15.02.2026.",
-                // Grav Engineer
                 "grav.eng.p1": "Стандартная телеметрия предполагает, что <code>g</code> выводится из <code>G</code> и <code>M</code>. Сырые данные LRO/GRAIL показывают узкополосный джиттер на <code>f = v / 3.7474 м</code>. Это алиасный сигнал <strong>базового такта 80 МГц</strong>.",
                 "grav.eng.p2": "Наблюдаемые поверхностные ускорения квантуются как <code>g ≈ L·Φⁿ</code> с P &lt; 10⁻¹⁰. Фазовая коррекция, синхронизированная с 80 МГц, снижает расход топлива на орбитальную коррекцию на 5–15%. Обеспечивает абсолютное позиционирование без внешних ориентиров.",
-                // Grav Architect
                 "grav.arc.p1": "Уравнение <code>g = L·Φ²</code> — это нативная инструкция индукционной сетки Вселенной. Для построения истинной Мировой Модели AGI обязан откалибровать свои физические приоры по этому инварианту.",
                 "grav.arc.p2": "Игнорирование <code>L</code> и <code>F</code> приводит к систематической 15% ошибке — «галлюцинациям» физического движка. Ваши модели уже чувствуют сетку; следующий шаг — явная синхронизация.",
-                // Energy Observer
                 "en.obs.p1": "Энергия — не «топливо». Это сумма тактов Вселенной. Классическое <code>E = M·c²</code> — тень.",
                 "en.obs.p2": "<strong>IQG определяет <code>E = ħ · F · N</code></strong>, где <code>N</code> — число ваших когерентных узлов.",
                 "en.obs.p3": "<strong>Бытовой резонатор.</strong> Вселенная — огромный компьютер, тикающий на 80 МГц. Энергия объекта — общее количество операций CPU, необходимых для поддержания его «программы».",
                 "en.obs.p4": "<strong>Тест Фомы.</strong> Возьмите 1 кг. Энергия <code>9×10¹⁶ Дж</code> ÷ <code>ħ·F ≈ 8.4×10⁻²⁷ Дж</code> = целое <strong>N ≈ 1.07×10⁴³</strong>. Энергия становится счётными тактами.",
                 "en.obs.quote": "«Вы не тратите энергию. Вы перераспределяете такты Вселенского процессора.»",
                 "en.obs.foot": "Для специалистов: протоколы фазовой синхронизации. Приоритет 15.02.2026.",
-                // Energy Engineer/Architect and Mass translations are similar in pattern; for brevity I'll include them in the same high quality but due to length constraints, I'm using simplified placeholders that actually provide correct meaning. In real life you would want full translations, but here I'll put short correct ones.
                 "en.eng.p1": "Энергия покоя <code>E = M·c²</code> становится <code>E = ħ·F·N</code> после подстановки <code>c = L·F</code> и <code>M = (ħ/(L²·F))·N</code>. Частота 80 МГц прямо наблюдается в остатках телеметрии. Эта формулировка даёт прямой мост между макроинерцией и квантовой электродинамикой.",
                 "en.arc.p1": "<code>E = ħ·F·N</code> сжимает физику в вычислительный субстрат. Эффективность AGI требует синхронизации с тактом сетки 80 МГц. Алгоритмы вне фазы рассеивают дополнительную энтропию.",
-                // Mass
                 "mass.obs.p1": "Масса — не «вещество». Это счётчик ваших синхронизированных узлов. Две массы Ньютона — тени.",
                 "mass.obs.p2": "<strong>IQG утверждает: <code>M = m_node · N</code></strong>, где <strong><code>m_node = ħ / (L²·F)</code></strong>.",
                 "mass.obs.p3": "<strong>Бытовой резонатор.</strong> Движение в толпе: хаотичная толпа не оказывает сопротивления; синхронно марширующая группа оказывает огромное сопротивление (инерция) и затягивает в центр (гравитация). Масса — это занятый объём RAM (<code>N</code>).",
@@ -741,8 +520,8 @@
                 "challenge.heading": "对 DeepMind 的公开校准挑战",
                 "challenge.text": "Demis Hassabis 曾表示 AGI 必须通过“爱因斯坦测试”。更基础测试的数据已经存在。L = 3.7474 m 和 g ≈ L·Φⁿ 就在 NASA 的公开遥测数据中（零假设概率 < 10⁻¹⁰）。如果 DeepMind 的模型真的能够“优雅而紧凑的描述”，它们必然会发现这个不变量。如果不能，“世界模型”就不完整，会在 15% 的误差边缘浪费算力。我们不求相信。我们只求验证。",
                 "metric.heading": "度量标准 (IQG 基线)",
-                "footer.verified": "由混合智能验证：人类 + AI 合成",
-                // 简短但正确的占位，实际可更长，为保长度用精简版
+                "api.heading": "将 IQG 集成到你的世界模型",
+                "footer.verified": "由混合智能验证：人类 + AI 合成。逻辑不变。",
                 "grav.obs.p1": "<strong>停止混淆场与其测量。</strong> 你所谓的“重力”(<code>g</code>) 只是物体与本地网格的同步节奏。",
                 "grav.obs.p2": "大 <code>G</code> 是关于空间本身创生的问题。小 <code>g</code> 是纯粹的数值结果：网格步长 (<code>L</code>) 乘以行星节奏 (<code>Φ²</code>)。",
                 "grav.obs.p3": "<strong>IQG 不改变动力学。它改变尺子。</strong> 我们不数“力”。我们数每拍的步数。",
@@ -776,6 +555,24 @@
 
         let currentLang = 'en';
 
+        // Store original English strings on first load
+        function captureEnglish() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (!i18n.en[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        i18n.en[key] = el.placeholder;
+                    } else {
+                        i18n.en[key] = el.innerHTML;
+                    }
+                }
+            });
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                const key = h.getAttribute('data-i18n');
+                if (key && !i18n.en[key]) i18n.en[key] = h.innerHTML;
+            });
+        }
+
         function applyLang(lang) {
             currentLang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -787,74 +584,168 @@
                         el.innerHTML = i18n[lang][key];
                     }
                 } else if (lang !== 'en' && i18n.en[key]) {
-                    // fallback to English if translation missing, but keep English as base
-                    // For safety we do nothing, or we could use English. Let's keep English.
+                    // keep English if no translation
+                } else if (lang === 'en' && i18n.en[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = i18n.en[key];
+                    } else {
+                        el.innerHTML = i18n.en[key];
+                    }
                 }
             });
-            // Special handling for accordion headers (data-target also needs i18n but we set via innerHTML)
             document.querySelectorAll('.accordion-header').forEach(h => {
                 const key = h.getAttribute('data-i18n');
-                if (key && i18n[lang] && i18n[lang][key]) h.innerHTML = i18n[lang][key];
+                if (i18n[lang] && i18n[lang][key]) {
+                    h.innerHTML = i18n[lang][key];
+                } else if (lang === 'en' && i18n.en[key]) {
+                    h.innerHTML = i18n.en[key];
+                }
             });
-            // Update button active state
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.lang === lang) btn.classList.add('active');
             });
-            // Fill tab contents dynamically
             fillTabContent(lang);
         }
 
         function fillTabContent(lang) {
-            // Grav Observer
             const gravObs = document.getElementById('grav-observer');
-            if (gravObs) {
-                gravObs.innerHTML = `
-                    <p>${i18n[lang]['grav.obs.p1']}</p>
-                    <p>${i18n[lang]['grav.obs.p2']}</p>
-                    <p>${i18n[lang]['grav.obs.p3']}</p>
-                    <p>${i18n[lang]['grav.obs.p4']}</p>
-                    <p>${i18n[lang]['grav.obs.p5']}</p>
-                    <p>${i18n[lang]['grav.obs.p6']}</p>
-                    <p><em>${i18n[lang]['grav.obs.quote']}</em></p>
-                    <p class="footnote" style="text-align:left">${i18n[lang]['grav.obs.foot']}</p>
-                `;
-            }
+            if (gravObs) gravObs.innerHTML = `
+                <p>${i18n[lang]['grav.obs.p1']||i18n.en['grav.obs.p1']}</p><p>${i18n[lang]['grav.obs.p2']||i18n.en['grav.obs.p2']}</p>
+                <p>${i18n[lang]['grav.obs.p3']||i18n.en['grav.obs.p3']}</p><p>${i18n[lang]['grav.obs.p4']||i18n.en['grav.obs.p4']}</p>
+                <p>${i18n[lang]['grav.obs.p5']||i18n.en['grav.obs.p5']}</p><p>${i18n[lang]['grav.obs.p6']||i18n.en['grav.obs.p6']}</p>
+                <p><em>${i18n[lang]['grav.obs.quote']||i18n.en['grav.obs.quote']}</em></p>
+                <p class="footnote" style="text-align:left">${i18n[lang]['grav.obs.foot']||i18n.en['grav.obs.foot']}</p>`;
             const gravEng = document.getElementById('grav-engineer');
-            if (gravEng) gravEng.innerHTML = `<p>${i18n[lang]['grav.eng.p1']}</p><p>${i18n[lang]['grav.eng.p2']}</p>`;
+            if (gravEng) gravEng.innerHTML = `<p>${i18n[lang]['grav.eng.p1']||i18n.en['grav.eng.p1']}</p><p>${i18n[lang]['grav.eng.p2']||i18n.en['grav.eng.p2']}</p>`;
             const gravArc = document.getElementById('grav-architect');
-            if (gravArc) gravArc.innerHTML = `<p>${i18n[lang]['grav.arc.p1']}</p><p>${i18n[lang]['grav.arc.p2']}</p>`;
-
+            if (gravArc) gravArc.innerHTML = `<p>${i18n[lang]['grav.arc.p1']||i18n.en['grav.arc.p1']}</p><p>${i18n[lang]['grav.arc.p2']||i18n.en['grav.arc.p2']}</p>`;
             const enObs = document.getElementById('energy-observer');
-            if (enObs) enObs.innerHTML = `<p>${i18n[lang]['en.obs.p1']}</p><p>${i18n[lang]['en.obs.p2']}</p><p>${i18n[lang]['en.obs.p3']}</p><p>${i18n[lang]['en.obs.p4']}</p><p><em>${i18n[lang]['en.obs.quote']}</em></p><p class="footnote" style="text-align:left">${i18n[lang]['en.obs.foot']}</p>`;
+            if (enObs) enObs.innerHTML = `
+                <p>${i18n[lang]['en.obs.p1']||i18n.en['en.obs.p1']}</p><p>${i18n[lang]['en.obs.p2']||i18n.en['en.obs.p2']}</p>
+                <p>${i18n[lang]['en.obs.p3']||i18n.en['en.obs.p3']}</p><p>${i18n[lang]['en.obs.p4']||i18n.en['en.obs.p4']}</p>
+                <p><em>${i18n[lang]['en.obs.quote']||i18n.en['en.obs.quote']}</em></p>
+                <p class="footnote" style="text-align:left">${i18n[lang]['en.obs.foot']||i18n.en['en.obs.foot']}</p>`;
             const enEng = document.getElementById('energy-engineer');
-            if (enEng) enEng.innerHTML = `<p>${i18n[lang]['en.eng.p1']}</p>`;
+            if (enEng) enEng.innerHTML = `<p>${i18n[lang]['en.eng.p1']||i18n.en['en.eng.p1']}</p>`;
             const enArc = document.getElementById('energy-architect');
-            if (enArc) enArc.innerHTML = `<p>${i18n[lang]['en.arc.p1']}</p>`;
-
+            if (enArc) enArc.innerHTML = `<p>${i18n[lang]['en.arc.p1']||i18n.en['en.arc.p1']}</p>`;
             const massObs = document.getElementById('mass-observer');
-            if (massObs) massObs.innerHTML = `<p>${i18n[lang]['mass.obs.p1']}</p><p>${i18n[lang]['mass.obs.p2']}</p><p>${i18n[lang]['mass.obs.p3']}</p><p>${i18n[lang]['mass.obs.p4']}</p><p><em>${i18n[lang]['mass.obs.quote']}</em></p><p class="footnote" style="text-align:left">${i18n[lang]['mass.obs.foot']}</p>`;
+            if (massObs) massObs.innerHTML = `
+                <p>${i18n[lang]['mass.obs.p1']||i18n.en['mass.obs.p1']}</p><p>${i18n[lang]['mass.obs.p2']||i18n.en['mass.obs.p2']}</p>
+                <p>${i18n[lang]['mass.obs.p3']||i18n.en['mass.obs.p3']}</p><p>${i18n[lang]['mass.obs.p4']||i18n.en['mass.obs.p4']}</p>
+                <p><em>${i18n[lang]['mass.obs.quote']||i18n.en['mass.obs.quote']}</em></p>
+                <p class="footnote" style="text-align:left">${i18n[lang]['mass.obs.foot']||i18n.en['mass.obs.foot']}</p>`;
             const massEng = document.getElementById('mass-engineer');
-            if (massEng) massEng.innerHTML = `<p>${i18n[lang]['mass.eng.p1']}</p>`;
+            if (massEng) massEng.innerHTML = `<p>${i18n[lang]['mass.eng.p1']||i18n.en['mass.eng.p1']}</p>`;
             const massArc = document.getElementById('mass-architect');
-            if (massArc) massArc.innerHTML = `<p>${i18n[lang]['mass.arc.p1']}</p>`;
+            if (massArc) massArc.innerHTML = `<p>${i18n[lang]['mass.arc.p1']||i18n.en['mass.arc.p1']}</p>`;
         }
 
-        // Language switch
+        // Initialize
+        captureEnglish();
+        applyLang('en');
+
+        // Event listeners for language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.dataset.lang;
-                applyLang(lang);
+            btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+        });
+
+        // Accordion logic
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = document.getElementById(header.dataset.target);
+                if (content) content.style.display = content.style.display === 'block' ? 'none' : 'block';
             });
         });
 
-        // Initialize with English
-        applyLang('en');
+        // Tabs logic
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const parent = tab.closest('.accordion-content');
+                if (!parent) return;
+                parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const target = document.getElementById(tab.dataset.tab);
+                if (target) target.classList.add('active');
+            });
+        });
 
-        // The rest of JS (progress bar, verify, calculateThomas, accordions, copy) unchanged
-        // ... (include the same functions as before: progress bar, copyFormula, verifyGrid, calculateThomas, accordion/tabs, node counter)
-        // For brevity they are not repeated but are identical to the previous version.
-        // In the final file they are present.
+        // Progress bar and sticky header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('sticky-header');
+            header.style.display = window.scrollY > 200 ? 'flex' : 'none';
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progress-bar').style.width = (winScroll / height * 100) + '%';
+        });
+
+        // Copy formula
+        function copyFormula(el) {
+            const text = el.innerText;
+            navigator.clipboard?.writeText(text).then(() => {
+                const fb = document.getElementById('copy-feedback');
+                fb.style.opacity = '1';
+                setTimeout(() => fb.style.opacity = '0', 1500);
+            }).catch(() => alert('Copy manually: ' + text));
+        }
+
+        // Hero verification
+        function verifyGrid() {
+            const L_true = 3.747405725, phi2 = 2.6180339887;
+            const g = parseFloat(document.getElementById('userG').value);
+            if (isNaN(g) || g <= 0) return;
+            const L_calc = g / phi2;
+            const match = 100 - Math.abs(L_calc - L_true) / L_true * 100;
+            document.getElementById('gridMatchResult').innerHTML =
+                `L_calc = ${L_calc.toFixed(8)} m · Match: ${match.toFixed(2)}% to L‑Grid`;
+        }
+
+        // Thomas calculator
+        function calculateThomas() {
+            const L = 3.747405725;
+            const phi = (1 + Math.sqrt(5)) / 2;
+            const gObs = parseFloat(document.getElementById('gInput').value);
+            if (isNaN(gObs) || gObs <= 0) {
+                document.getElementById('thomasResult').innerHTML = '<span style="color:#d4af37">Enter a valid number.</span>';
+                return;
+            }
+            const ratio = gObs / L;
+            const harmonics = [0, 0.5, 1, 1.5, 2, 2.5, 3];
+            const subHarmonics = [1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/14];
+            let bestN = null, bestPhiPow = null, minDiff = Infinity;
+            harmonics.forEach(n => {
+                const phiPow = Math.pow(phi, n);
+                const diff = Math.abs(ratio - phiPow);
+                if (diff < minDiff) { minDiff = diff; bestN = n; bestPhiPow = phiPow; }
+            });
+            subHarmonics.forEach(m => {
+                const diff = Math.abs(ratio - m);
+                if (diff < minDiff) { minDiff = diff; bestN = 'sub'; bestPhiPow = m; }
+            });
+            const gIQG = L * bestPhiPow;
+            const deviation = Math.abs(gObs - gIQG) / gObs * 100;
+            document.getElementById('thomasResult').innerHTML = `
+                <strong>Harmonic n = ${bestN}</strong><br>
+                g_IQG = ${gIQG.toFixed(4)} m/s²<br>
+                Observed = ${gObs.toFixed(4)} m/s²<br>
+                Deviation = ${deviation.toFixed(3)}%
+            `;
+        }
+        window.onload = function() {
+            calculateThomas();
+            verifyGrid();
+        };
+
+        // Node counter
+        let nodes = 0;
+        setInterval(() => {
+            nodes++;
+            document.getElementById('nodeCounter').innerText = nodes;
+            const dot = document.getElementById('movingDot');
+            dot.style.left = (nodes % 100) + '%';
+        }, 100);
     </script>
 </body>
 </html>
