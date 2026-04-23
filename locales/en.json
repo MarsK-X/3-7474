@@ -1,0 +1,25 @@
+{
+  "hero.formula": "3.747405725 × 2.6180339887 = 9.811237...",
+  "hero.pixel": "L = 3.747405725 m — Pixel of Reality",
+  "hero.verify": "Verify",
+  "hero.cta": "Test telemetry. Find L-invariant. #37474",
+  "transition.heading": "The Great Transition: From Shadows to Genesis",
+
+  "g.short_title": "Resonant Acceleration",
+  "e.short_title": "Quantum Energy",
+  "m.short_title": "Phase‑Volume Mass",
+
+  "accordion.grav": "RESONANT ACCELERATION (g) — Why the apple falls",
+  "accordion.energy": "Energy (E) — Why the world 'ticks'",
+  "accordion.mass": "Mass (M) — Why the body 'exists'",
+
+  "g.layperson": "We used to think: 'Earth pulls the apple with a force depending on its mass.' Now we see: space has its own 'step' (L ≈ 3.747×10⁻⁹ m) and its 'beauty proportion' — the Golden Ratio (Φ² ≈ 2.618). Multiplied together they give the acceleration of falling. Mass is not the cause — it merely bends space, while the acceleration is determined by geometry. The apple falls because space itself moves with this rhythm.",
+  "g.pro": "Classical form: g = G·M / R². G = 6.67430×10⁻¹¹ m³·kg⁻¹·s⁻², M — source mass, R — distance. Genesis form: g = L · Φ². L = 3.747405725×10⁻⁹ m — fundamental vacuum length ('Pixel of Reality'). Φ² = 2.6180339887 — square of the Golden Ratio. Derived from g ≈ 9.811237 → L = g / Φ². Acceleration becomes a pure geometric constant. Vacuum eigenfrequency: f = c / L ≈ 8.00×10¹⁶ Hz. This frequency feeds into the next formula for energy.",
+
+  "e.layperson": "Previously: E = M·c² — mass times speed of light squared. Now: energy is ħ (Planck's constant) × F (base frequency of the Universe) × N (number of 'ticks' in the object). Everything 'ticks' instead of 'weighs'. More ticks — more energy. Mass disappears, only rhythm and counting remain.",
+  "e.pro": "Classical: E = M·c², c = 299,792,458 m/s. Genesis: E = ħ · F · N. ħ = 1.054571817×10⁻³⁴ J·s, F = c / L ≈ 8.00×10¹⁶ Hz, N — integer quantum act count. For a body, N = M / m_node, where m_node = ħ/(c·L) ≈ 9.4×10⁻³⁵ kg. Each phase node contributes ħ·F, and total N gives the full energy. Energy is thus just a count of synchronized oscillators.",
+
+  "m.layperson": "Classically mass is inertia: M = F / a (force over acceleration). Now mass is simply the number of 'knots' in space: M = m_node · N. m_node — mass of one knot (≈9.4×10⁻³⁵ kg), N — how many knots in the body. Matter is not solid stuff, but ripples on the vacuum fabric. More ripples (knots) — more mass.",
+  "m.pro": "Classical inertia: M = F / a. Genesis: M = m_node · N. m_node = ħ/(c·L) ≈ 9.4×10⁻³⁵ kg — mass of a phase node. N = M / m_node (for 1 kg, N ≈ 1.06×10³⁴). Each node occupies volume ~L³ and arises from the vacuum interference pattern. Inertia is the resistance to changing the synchronization state of these nodes. The Golden Ratio appears in the hierarchical self‑similarity of the nodes, but at the simplest layer N is an integer."
+
+}
