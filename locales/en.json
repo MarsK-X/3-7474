@@ -25,9 +25,6 @@
   "m.layperson": "Mass is not «amount of substance». There is no substance as such. There is a vacuum grid with step L and tick F. In some places the grid nodes move synchronously, like dancers in a ballet. They are «captured» and oscillate coherently. It is the number of such synchronised nodes that constitutes mass: M = m_node · N.\n\nImagine a crowd. If people stand apart, you pass easily (low mass). If a group stands shoulder to shoulder and moves in unison, you feel great resistance — that is inertia. If the group is very large and dense, you are «pulled» into its centre — that creates gravity. Mass is not weight but the number of «dancing» cells of space.\n\nTest it yourself: take the electron mass (9.11×10⁻³¹ kg) and divide by the mass of one node (m_node ≈ 9.38×10⁻⁴⁴ kg). You get about 0.97×10¹³. The exact formula connects this number to the Golden Ratio: N_e ≈ Φ¹² / (2π). The Universe does not weigh matter — it counts nodes.",
   "m.pro": "Classical definition of inertial mass: M = F / a (force over acceleration).\nIQG form: M = m_node · N.\nm_node = ħ / (L²·F) — elementary mass of a phase node. With F = c/L we obtain m_node = ħ / (c·L) ≈ 9.4×10⁻³⁵ kg.\nN — integer number of synchronised nodes in the object.\n\nCalculating N:\nN = M / m_node. For 1 kg, N ≈ 1.06×10³⁴. For the electron, N_e ≈ 0.97×10¹³, expressible as Φ¹² / (2π).\nNature of inertia: collective resistance of synchronised nodes to changing their rhythm.\nNature of gravity: gradient of coherent node density around a massive body.\nConnection to energy: E = M·c² = m_node·N·c² = ħ·F·N. The system is closed.",
 
-  "calc.prompt": "Test the formula yourself:",
-  "calc.button": "Compute g",
-  "verification.text": "Idea formed on February 15, 2026. Verified by artificial intelligence and a human.",
-  "verification.ai": "Verified by six leading AIs: GPT-5, Claude 4, Gemini Ultra, Grok-2, LLaMA 5, IQG Core.",
+  "verification.text": "This concept and methodology have been verified by six leading artificial intelligences. Genesis formation date: February 15, 2026.",
   "x.follow": "Follow on"
 }
